@@ -1,0 +1,36 @@
+{
+  "project": "dirac",
+  "gate": 0,
+  "phase": "Phase 0b - Parameter accounting + scaffolding",
+  "objective": "rho/G/T satisfy their construction invariants on synthetic input; N_DIRAC-S/N_CNN/N_ViT within the locked 5% tolerance",
+  "job_id": null,
+  "checks": {
+    "forward_pass_shapes_and_dtype": {"passed": true, "test": "tests/test_rho_psd_trace1.py::test_forward_pass_shapes_and_dtype"},
+    "rho_psd_min_eig": {"threshold": -1e-06, "passed": true, "test": "tests/test_rho_psd_trace1.py::test_rho_is_psd_and_trace1"},
+    "rho_trace_error": {"threshold": 1e-05, "passed": true, "test": "tests/test_rho_psd_trace1.py::test_rho_is_psd_and_trace1"},
+    "rho_entropy_cross_validated": {"note": "efficient KxK path vs. brute-force dense eigendecomposition, atol=1e-3", "passed": true, "test": "tests/test_rho_psd_trace1.py::test_rho_entropy_matches_dense_eigendecomposition"},
+    "pure_state_entropy_is_zero": {"note": "confirms Construction A's rejection reason (formalization Section 3)", "passed": true, "test": "tests/test_rho_psd_trace1.py::test_pure_state_entropy_is_zero"},
+    "topology_finite": {"passed": true, "test": "tests/test_rho_psd_trace1.py::test_topology_summary_is_finite"},
+    "graph_adjacency_shape": {"passed": true, "test": "tests/test_graph_connectivity.py::test_adjacency_shape"},
+    "graph_orphan_nodes": {"threshold": 0, "value": 0, "passed": true, "test": "tests/test_graph_connectivity.py::test_no_orphan_nodes"},
+    "graph_connected_components": {"threshold": 1, "value": 1, "passed": true, "test": "tests/test_graph_connectivity.py::test_graph_is_fully_connected"},
+    "lattice_alone_connected": {"note": "isolates lattice connectivity from the learned top-k head", "passed": true, "test": "tests/test_graph_connectivity.py::test_lattice_alone_is_connected"},
+    "no_complex_dtype_params": {"passed": true, "test": "tests/test_param_count.py::test_no_complex_dtype_params_anywhere", "note": "guards the Section 9 complex-parameter-counting convention"},
+    "ledger_buckets_sum_to_total": {"passed": true, "test": "tests/test_param_count.py::test_ledger_buckets_sum_to_total"},
+    "param_count_delta_pct": {
+      "n_dirac_s": 1552520, "n_cnn": 1546240, "n_vit": 1487144,
+      "delta_cnn_pct": 0.405, "delta_vit_pct": 4.211,
+      "threshold": 5.0, "threshold_status": "CALIBRATE->locked",
+      "passed": true, "test": "tests/test_param_count.py::test_dirac_cnn_vit_within_matching_tolerance"
+    }
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [],
+  "decision_rule": "PASS iff all twelve checks pass (formalization Section 12, falsification gates 1 and 3-6)",
+  "interpretation": "All five Gate-0 invariants hold on synthetic input: rho is numerically PSD and trace-1 (cross-validated via two independent computational paths — the efficient KxK Gram-matrix entropy shortcut and a brute-force dense eigendecomposition — rather than trusting either alone); the rejected pure-state construction (Construction A) was independently confirmed to have exactly zero entropy, the documented reason it was not used as the default; G has zero orphan nodes and is a single connected component, with lattice connectivity alone (independent of the learned top-k head) verified sufficient; T's gudhi-computed persistence summary is finite; and N_DIRAC-S/N_CNN/N_ViT land within the locked 5% tolerance (CNN 0.41% off, ViT 4.21% off) using the Section 9 complex-parameter-counting convention, which was itself guarded by an explicit no-complex-dtype-parameter assertion. One real design gap was found and fixed during this phase, not merely worked around: ComplexEncoder's transformer initially had no positional encoding at all, discarding spatial information a spatial/relational/topological model should not discard; fixed with a fixed (non-learned, zero added parameters) 3D sinusoidal encoding, which also removed a latent bug where ViT3DBaseline's original learned positional embedding made its parameter count depend on volume_size, which would have silently invalidated this calibration the moment Phase 1 moves from Gate 0's synthetic 64^3 input to the real 128^3 target.",
+  "next": "Phase 1: dataset select+freeze, preprocessing (KiTS23 + MSD Liver + MSD Pancreas)",
+  "reproduce": "Med_Architecture_Research/dirac/tests/ (pytest, local CPU, no GPU/HF Job needed — synthetic input only). Modules: dirac/model/*.py, dirac/baselines/*.py. Config: dirac/configs/param_ledger.json.",
+  "human_signoff": "GO"
+}

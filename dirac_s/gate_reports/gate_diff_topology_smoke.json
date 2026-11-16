@@ -1,0 +1,31 @@
+{
+    "project": "dirac",
+    "gate": "diff_topology_smoke",
+    "phase": "Diff-topology follow-on - full run",
+    "objective": "Does adding a differentiable topology-fidelity loss on the decoder's reconstruction, on top of D_full's unmodified recipe, converge without instability? (Section 5 real-data gate)",
+    "job_id": null,
+    "checks": {
+        "n_steps": 13300,
+        "n_nan_inf_steps": 0,
+        "loss_total_first_20pct_mean": 1.0730625194490404,
+        "loss_total_final_20pct_mean": 0.6035078853144682,
+        "loss_total_final_20pct_first_half_mean": 0.6045934204320262,
+        "loss_total_final_20pct_second_half_mean": 0.60242235019691,
+        "decreasing_in_tail": true,
+        "grad_norm_mean": 3.349090850662468,
+        "loss_topology_diff_first_20pct_mean": 0.19973021220709933,
+        "loss_topology_diff_final_20pct_mean": 0.3859492851855387,
+        "gudhi_s_mean_per_step": 1.2549062878027895
+    },
+    "status": "PASS",
+    "fallback_path": null,
+    "seeds": [
+        0
+    ],
+    "data_gaps": [],
+    "decision_rule": "PASS iff 0 NaN/Inf steps AND mean(loss_total) over the second half of the final 20% of steps <= mean(loss_total) over the first half of that same window -- same rule as pretrain_dirac_job.py's own Gate 3, applied to this run's total_loss (which now includes LAM_TD * loss_topology_diff)",
+    "interpretation": "Full run: 13300 steps across 50 epochs over 533 cases, lam_td=1.0. 0 NaN/Inf steps. total_loss fell from 1.0731 (first 20%) to 0.6035 (final 20%), and within that final-20% window kept decreasing. loss_topology_diff fell from 0.1997 to 0.3859 over the same window (PASS/FAIL is decided on total_loss alone, per decision_rule -- this number is diagnostic, not gate-critical). Mean added gudhi wall time per step: 1.25s.",
+    "next": "Real comparison: retrain with the SAME seed/data/steps as D_full's own gate_3 run, then rerun the H2/H3-C probe methodology against this checkpoint vs. D_full's -- separately gated, its own explicit human GO, real GPU spend",
+    "reproduce": "Med_Architecture_Research/dirac/jobs/train_diff_topology_job.py (HF Job). Code mounted read-only from hf://datasets/Chucks90/dirac-code (unmodified). Data mounted from hf://buckets/Chucks90/jobs-artifacts. Env: SMOKE=0 LAM_TD=1.0.",
+    "human_signoff": null
+}

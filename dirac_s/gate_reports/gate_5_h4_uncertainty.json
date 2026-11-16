@@ -1,0 +1,40 @@
+{
+  "project": "dirac",
+  "gate": "5 (working, H4 only)",
+  "phase": "Phase 5 slice 5 - H4, uncertainty (dirac_formalization.md Section 8 magnitude-conflation check)",
+  "objective": "Does S(rho_i) (von Neumann entropy per token) predict downstream prediction error, and does that survive controlling for token magnitude ||psi_i|| -- the exact check Section 8 specifies against a documented real failure in the sibling sheaf project.",
+  "note": "This is NOT gate_reports/gate_5.json. DIRAC-only, not a 3-way architecture comparison -- CNN/ViT have no rho/entropy concept. Unit of analysis is per-TOKEN (145 val cases x 512 tokens = 74,240 data points), not per-case.",
+  "job_id": "see processed/dirac/probe_h4_uncertainty_results.json for exact job_id",
+  "design": {
+    "error_signal": "per-token L1 reconstruction error, from the frozen unmasked forward pass through the trained Decoder3D/ZBroadcast (Phase 3 checkpoint, loaded not retrained) -- 'reconstruction error' is explicitly one of Section 8's own suggested error signals.",
+    "plain_baseline": "categorical Shannon entropy of the raw mixture weights H(pi_i) = -sum_k pi_k log(pi_k) (rho.weights, no basis/overlap geometry) vs S(rho_i)'s von Neumann entropy (accounts for how much the K basis vectors actually overlap, via density_state.py's Gram-matrix trick) -- plays the same comparator role the sheaf project's plain predictive-entropy baseline played against its own disagreement signal.",
+    "magnitude_conflation_check": "partial_spearman(S(rho), error, controlling_for=||psi||), ported verbatim (same residualization algorithm) from sheaf's own gate_2.json H2b check, per Section 8's explicit instruction to reuse the same statistic for direct comparability.",
+    "normalized_variant": "same checks repeated with mixture logits computed from L2-normalized (direction-only) psi_i -- same trained DensityHead weights, a different eval-time input, no retraining.",
+    "no_dirac_s_modification": "N_DIRAC-S stayed 1,552,520 throughout."
+  },
+  "checks": {
+    "check_1_S_rho_vs_error": {
+      "spearman_rho": -0.6692377061361904, "spearman_p": 0.0004997501249375312,
+      "auroc_error_above_median": 0.15885225783630444,
+      "partial_spearman_given_psi_norm": 0.15265593446696815,
+      "collapses_toward_zero": true
+    },
+    "check_2_plain_baseline_H_pi_vs_error": {
+      "spearman_rho": -0.724699767720163, "spearman_p": 0.0004997501249375312,
+      "auroc_error_above_median": 0.1309912733515718,
+      "partial_spearman_given_psi_norm": 0.13551233131881035,
+      "collapses_toward_zero": true
+    },
+    "check_4_S_rho_normalized_psi_vs_error": {
+      "spearman_rho": -0.13584440097318215, "spearman_p": 0.0004997501249375312,
+      "auroc_error_above_median": 0.43046903739502823,
+      "partial_spearman_given_psi_norm": -0.030923609263948472,
+      "collapses_toward_zero": true
+    }
+  },
+  "status": "FAIL -- S(rho) reproduces the exact magnitude-conflation failure Section 8 was written to catch. Not a null result: an actively wrong-signed one.",
+  "interpretation": "This is the sheaf failure pattern, reproduced in DIRAC. Three independent signs, all pointing the same way: (1) S(rho)'s raw correlation with reconstruction error is not just weak, it is strongly negative (rho=-0.669) and its error-discrimination AUROC (0.159) is far BELOW chance in the intended direction -- meaning high-entropy tokens are systematically the WELL-reconstructed ones, the opposite of what a genuine uncertainty signal should show. (2) The plain categorical-entropy baseline H(pi) is equally or more strongly wrong-signed (rho=-0.725, AUROC=0.131) -- the von Neumann formulation's added basis-overlap complexity does not clearly buy anything over the much simpler comparator; if anything S(rho) is marginally less bad. (3) The partial correlation controlling for ||psi|| collapses toward zero and flips sign (0.153, from a raw -0.669) for S(rho), and normalizing psi to unit norm before recomputing entropy independently collapses the raw correlation from -0.669 to -0.136 (check 4) -- both diagnostics agree that most of the apparent entropy-error relationship was riding on token magnitude, not genuine directional uncertainty. A plausible (not yet confirmed) mechanistic story for the wrong sign specifically: low-content/background voxel regions (air, uniform tissue) are trivial to reconstruct (near-zero error) and plausibly also produce low-magnitude psi with a mixture concentrated on a 'background' basis state (low entropy) -- while information-dense anatomical regions have both higher magnitude AND more mixture spread (higher entropy) yet are not necessarily harder to reconstruct given the model was explicitly trained to reconstruct exactly this kind of content. If correct, this is content-density acting as a shared driver of both magnitude and entropy, unrelated to genuine epistemic uncertainty -- structurally the same shape as sheaf's own documented failure (disagreement conflated with signal magnitude), just manifesting with the opposite sign here. Not yet verified by a dedicated follow-up check; flagged as the leading hypothesis, not a proven mechanism.",
+  "next": "H5 (robustness) and the 5 ablations remain. This result means S(rho) as currently computed should NOT be presented as a working uncertainty signal in any eventual paper without this caveat attached -- per formalization Section 8's own framing, this check exists specifically to prevent that from happening silently. D_-prob (drop the probabilistic/rho branch entirely) is now more informative than originally scoped: it would show whether removing a demonstrably-broken-as-uncertainty component changes anything else (H1/H2/H3 results), a useful robustness check on the rest of Phase 5's findings.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/probe_h4_uncertainty_job.py (HF Job, t4-medium -- needs a fresh forward pass through the trained encoder+decoder, not reusable from any prior cache). Code mounted read-only from hf://datasets/Chucks90/dirac-code (includes eval/stats.py's new partial_spearman, ported from sheaf). Data + Phase-3 checkpoint mounted from hf://buckets/Chucks90/jobs-artifacts. Output: processed/dirac/probe_h4_uncertainty_results.json.",
+  "human_signoff": null
+}

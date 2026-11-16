@@ -1,0 +1,35 @@
+{
+  "project": "dirac",
+  "gate": "5 (working, H2 only)",
+  "phase": "Phase 5 slice 4 - H2, data efficiency (experimental-spec Section 22)",
+  "objective": "Does DIRAC-S retain useful performance when downstream labels are scarce, compared to the parameter-matched CNN/ViT baselines?",
+  "note": "This is NOT gate_reports/gate_5.json. Gate 5 covers H1-H5 plus the 5 ablations together. This file records H2's result for the eventual gate_5.json to aggregate.",
+  "task_choice": "The topology probe (H3-C's target and cached pre-fusion h representations), not H1's tumor-size probe. Neither spec document names which downstream task H2 should use. H1's task is a robust null even at 100% labels (gate_reports/gate_5_h1_probing.json), so a label-scarcity curve on it would mostly show 'stays near chance regardless of fraction' -- not informative. H3-C has a real, seed-robust DIRAC advantage (gate_reports/gate_5_h3c_topology.json), making 'does that advantage hold under scarcity' the scientifically meaningful question, and it reuses H3-C's cache directly (no new GPU extraction).",
+  "design": {
+    "fractions": [0.01, 0.05, 0.10, 0.25, 0.50, 1.00],
+    "sampling": "nested (one seeded shuffle of the train split, then prefixes of increasing length) -- the 5% subset is a strict subset of the 10% subset etc, isolating 'more of the same base sample' from noise due to unrelated case-composition changes between fraction points",
+    "val_fixed": "val split (n=145) stays fixed and full at every fraction -- only the train subset used to fit the probe shrinks",
+    "probe": "single Linear(dim_in, 9) per architecture, refit independently at each fraction, same optimizer/epochs as H3-C",
+    "1pct_caveat": "at 1% (n=5 train cases), CNN's 288-dim probe is wildly underdetermined -- reported anyway (a real, informative data point about robustness to extreme scarcity, not a fitting failure to hide), and correspondingly the noisiest point across probe-training seeds (see checks below)."
+  },
+  "checks": {
+    "area_under_learning_curve": {
+      "dirac": {"by_probe_seed": [0.7164437941118749, 0.6966483439563269, 0.7029], "mean": 0.7053, "std": 0.0083},
+      "cnn": {"by_probe_seed": [0.5218281551986039, 0.5276858800844393, 0.5411], "mean": 0.5302, "std": 0.0081},
+      "vit": {"by_probe_seed": [0.5363726658290398, 0.5409589038180336, 0.5524], "mean": 0.5432, "std": 0.0067},
+      "dirac_margin_over_best_baseline_per_seed": [0.18007113, 0.15568944, 0.1505], "dirac_margin_mean": 0.1621
+    },
+    "macro_spearman_at_1pct_n5": {
+      "dirac": {"by_probe_seed": [0.6578334532878964, 0.44478794443423797, 0.5653484327639666], "mean": 0.5560, "std": 0.0872},
+      "cnn": {"by_probe_seed": [0.20393796976810138, 0.3973570982396061, 0.4099557536544985], "mean": 0.3371, "std": 0.0943},
+      "vit": {"by_probe_seed": [0.16313407324874035, 0.27732309828192653, 0.1166078514405068], "mean": 0.1857, "std": 0.0675},
+      "dirac_margin_over_best_baseline_per_seed": [0.45389548, 0.04743085, 0.15539268], "note": "noisier than the AULC (expected at n=5), but positive at every seed -- never crosses zero"
+    },
+    "curve_shape": "DIRAC's curve is flat and high from the first point (macro-Spearman ~0.44-0.66 already at n=5, rising only modestly to ~0.70-0.75 at n=533 -- most of DIRAC's achievable performance is already linearly decodable from 5 examples). CNN/ViT's curves ramp steeply from a much lower starting point (~0.12-0.41 at n=5) up toward a plateau around 0.52-0.58 that is still well below DIRAC's floor -- both baselines need roughly 25-50% of the training data to approach the performance DIRAC already has at 1%."
+  },
+  "status": "Real, probe-seed-robust DIRAC data-efficiency advantage -- the largest, most consistent margin found in Phase 5 so far",
+  "interpretation": "DIRAC dominates the entire learning curve, not just the 100%-label endpoint: at every single fraction tested, across all 3 probe-training seeds, DIRAC's macro-Spearman exceeds both baselines'. The AULC gap (mean 0.162, tight variance across seeds, std 0.007-0.008 for all three architectures) is the most robust single number in Phase 5 to date. This sharpens the H3-C finding rather than just repeating it: DIRAC's topology-predictive structure isn't merely present in the representation, it is EXTREMELY sample-efficient to extract with a linear probe -- 5 labeled examples recover most of what 533 examples eventually recover, whereas CNN/ViT need an order of magnitude more data to approach even DIRAC's 1% performance. Read together with H3-C's caveat (DIRAC's encoder received an explicit L_topology training-time gradient that CNN/ViT's recipe has no equivalent of), the most defensible causal story is still: this reflects the L_topology objective's effect on the encoder (which shapes psi/rho to be linearly-close to topology-predictive by construction, so a linear probe needs very little additional data to find that structure), the architecture, or both -- not separable by this experiment. But even under that caveat, the empirical fact of the data-efficiency gap is real and large, and would matter directly for any practical use case with limited downstream labels.",
+  "next": "H4 (uncertainty/magnitude-conflation check), H5 (robustness), and the 5 ablations remain. This H2 result and H3-C are now two independent, mutually-reinforcing pieces of evidence pointing at the same underlying mechanism (L_topology's training-time signal) -- the D_-topology ablation (retrain DIRAC with L_topology removed) is the single most decisive next experiment for disentangling 'architecture' from 'explicit topology supervision' as the explanation for both findings.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/probe_h2_data_efficiency_job.py (HF Job, cpu-upgrade -- CPU only, reuses H3-C's cached h, computes real T(X) targets via gudhi for all 678 cases). Code mounted read-only from hf://datasets/Chucks90/dirac-code. Data + H3-C's representation cache mounted from hf://buckets/Chucks90/jobs-artifacts. Env: SEED=0,1,2 (3 separate runs). Outputs: processed/dirac/probe_h2_data_efficiency_results_seed{0,1,2}.json.",
+  "human_signoff": null
+}

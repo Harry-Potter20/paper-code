@@ -1,0 +1,29 @@
+{
+  "project": "dirac",
+  "gate": 2,
+  "phase": "Phase 2 - Unit tests for rho/G/T on real (not synthetic) preprocessed volumes",
+  "objective": "Do rho/G/T hold on real preprocessed volumes, at the real target scale (grid_shape=8x8x8, 512 tokens), not just synthetic 64-token CI input?",
+  "job_id": "6a805d4d1f5885ae605babd3",
+  "checks": {
+    "n_checked": 36,
+    "n_ok": 36,
+    "n_failures": 0,
+    "by_dataset": {
+      "kits": {"checked": 12, "ok": 12},
+      "pancreas": {"checked": 12, "ok": 12},
+      "liver": {"checked": 12, "ok": 12}
+    },
+    "per_case_checks": ["rho_psd", "rho_trace1", "graph_orphan_nodes", "graph_connected_components",
+                        "topology_finite", "z_finite", "psi_finite"],
+    "sampling": "12 cases per dataset, seeded random sample (seed=0) from Gate-1 QC-passed manifest rows, stratified across splits present in the sample"
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [],
+  "decision_rule": "PASS iff all sampled real cases pass every Gate-0-equivalent check (formalization Section 12, falsification gates 1 and 4-5), at the real 128^3/512-token scale",
+  "interpretation": "All 36 sampled real cases (12 per dataset, seeded sample from the frozen Gate-1 manifest) pass every check: rho is numerically PSD and trace-1, G has zero orphan nodes and is a single connected component, T's real gudhi-computed persistence summary is finite, and psi/z contain no NaN/Inf. This is the first time the architecture has run at the real target scale (grid_shape=8x8x8, 512 tokens, matching actual 128^3 materialized volumes) rather than Gate 0's smaller 64-token synthetic-CI scale — validated as parameter-count-equivalent by construction (every DiracModel layer is per-token or fixed-kernel: conv, linear, GCN, transformer all have N-independent parameter counts, confirmed during Phase 0b's own positional-encoding fix, which specifically removed the one N-dependent parameter source — ViT3DBaseline's old learned positional embedding). No real-data edge case (degenerate/near-empty region, HU-normalization outlier, malformed volume) broke any check across all three datasets. One real operational finding, not a correctness bug: per-case latency reading from the mounted bucket was far higher than the pure-compute cost measured in a local smoke test (0.14s/case on synthetic data vs. roughly 100-150s/case observed in this run, total 8939s for 36 cases) - almost certainly bucket-mount read overhead, not model compute. Not a blocker for Gate 2's PASS (correctness, not speed, is what this gate tests), but worth addressing (e.g. batched/parallel reads, or a local scratch cache) before Phase 3 needs to iterate over the full 801-case dataset repeatedly during actual pretraining.",
+  "next": "Phase 3: pretraining (smoke-scale run first, per IMPLEMENTATION_SPEC.md Phase 3, then the full run pending separate human authorization of that compute spend)",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/gate2_real_data_job.py (HF Job, cpu-upgrade). Code mounted read-only from hf://datasets/Chucks90/dirac-code (model/+data/ packages, pushed from dirac/model and dirac/data). Data mounted from hf://buckets/Chucks90/jobs-artifacts. Output: processed/dirac/gate2_results.json in the same bucket.",
+  "human_signoff": "GO"
+}

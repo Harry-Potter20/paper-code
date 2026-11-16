@@ -1,0 +1,18 @@
+/Users/user/Elysium/Med_Architecture_Research/dirac/model/complex_encoder.py:56: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(layer, num_layers=depth)
+[pairing-stability] 60 real AdamW steps, lr=0.0001, dims=0..2
+[pairing-stability] loss_topology_diff: step0=0.2838 step30=0.0393 step59=0.0515
+
+--- H0 ---
+pair count over time: min=80 max=205 first5=[167, 205, 197, 179, 185] last5=[85, 86, 86, 83, 84]
+consecutive-step Jaccard overlap: mean=0.406 min=0.042 steps_with_IDENTICAL_pairing=0/59
+
+--- H1 ---
+pair count over time: min=553 max=705 first5=[566, 553, 635, 678, 699] last5=[589, 598, 595, 596, 585]
+consecutive-step Jaccard overlap: mean=0.489 min=0.067 steps_with_IDENTICAL_pairing=0/59
+
+--- H2 ---
+pair count over time: min=333 max=481 first5=[481, 422, 424, 414, 399] last5=[355, 352, 355, 358, 356]
+consecutive-step Jaccard overlap: mean=0.618 min=0.171 steps_with_IDENTICAL_pairing=0/59
+
+[pairing-stability] interpretation: mean Jaccard close to 1.0 across all dims would mean the pairing is stable and this is NOT the mechanism behind the observed training-time plateau. Mean Jaccard well below 1.0, especially combined with pair-count churn, means the active pairing is genuinely unstable across steps -- gradient earned under one pairing routinely stops applying to the next step's pairing, which is consistent with (not provably the sole cause of, but consistent with) the observed insensitivity to LAM_TD reweighting.

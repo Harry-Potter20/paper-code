@@ -1,0 +1,76 @@
+{
+  "project": "dirac",
+  "gate": 5,
+  "phase": "Phase 5 - Probing/transfer/uncertainty/robustness/ablations",
+  "objective": "Test H1-H5 individually (never as one combined score) against parameter-matched CNN/ViT baselines, then run the minimum ablation set (D_-complex, D_-prob, D_-graph, D_-topology, D_classical) to identify which components of DIRAC-S's advantage, if any, trace to the architecture versus to explicit auxiliary training signal (L_topology).",
+  "job_ids": {
+    "ablation_training": {
+      "D_classical": "6a82bb541f5885ae605c044e",
+      "D_-topology": "6a82bbf21f5885ae605c045a",
+      "D_-prob": "6a82d786cd3824960fcba9c3 (resumed from timed-out 6a82c9d3e55292eada79b2af)",
+      "D_-complex": "6a82d11ecd3824960fcba8d3 (resumed from timed-out 6a82c1f31f5885ae605c0571)",
+      "D_-graph": "6a82d126cd3824960fcba8d5 (resumed from timed-out 6a82c1fac97db76cbdf33ba8)"
+    },
+    "ablation_disentangling_probe": "6a82ec11e55292eada79b452"
+  },
+  "sub_reports": {
+    "H1_probing": "gate_reports/gate_5_h1_probing.json",
+    "H2_data_efficiency": "gate_reports/gate_5_h2_data_efficiency.json",
+    "H3AB_geometry_relations": "gate_reports/gate_5_h3ab_geometry_relations.json",
+    "H3C_topology": "gate_reports/gate_5_h3c_topology.json",
+    "H4_uncertainty": "gate_reports/gate_5_h4_uncertainty.json",
+    "H5_robustness": "gate_reports/gate_5_h5_robustness.json"
+  },
+  "checks": {
+    "H1_probing": {
+      "result": "Robust null for binary classification (tumor volume above/below train-only median) -- all three architectures land near chance (AUROC 0.48-0.55), no significant differences, across linear and nonlinear probes. Continuous log-volume regression recovers real, mostly-significant weak signal (rho~0.15-0.31, R^2~0-0.04) for all three, but per-architecture ranking flips between probe types -- read as noise at n=145, not a reliable ordering.",
+      "status": "H0 (no DIRAC advantage)"
+    },
+    "H2_data_efficiency": {
+      "result": "DIRAC dominates the ENTIRE label-fraction curve, not just the 100% endpoint. AULC (mean of 3 probe-training seeds): dirac=0.7053, cnn=0.5302, vit=0.5432. Margin 0.150-0.180 at every seed.",
+      "status": "Strong DIRAC advantage -- but see ablation_disentangling below: this advantage collapses without L_topology."
+    },
+    "H3AB_geometry_relations": {
+      "result": "No DIRAC advantage on either geometry (H3-A) or relations (H3-B), robust across 3 probe-training seeds. CNN is tied-to-ahead on H3-A (0.258 vs DIRAC 0.225) and consistently ahead on H3-B (0.214 vs DIRAC 0.147, CNN wins all 3 seeds).",
+      "status": "H0 (no DIRAC advantage); directly predicts D_-graph should show little effect (confirmed below: partial, not the largest, drop)."
+    },
+    "H3C_topology": {
+      "result": "DIRAC's C1 (pre-fusion h, mean-pooled, side-channel-free) clearly and consistently beats CNN/ViT: macro-Spearman (mean of 3 probe-training seeds) dirac=0.7113, cnn=0.5647, vit=0.5643, margin 0.123-0.158 at every seed. Sits close to its own C0 sanity-check ceiling (0.7489).",
+      "status": "Strong DIRAC advantage -- but see ablation_disentangling below: this advantage collapses without L_topology."
+    },
+    "H4_uncertainty": {
+      "result": "S(rho) vs per-token reconstruction error: Spearman -0.669 (strong but backwards -- high entropy predicts LOW error), AUROC 0.159 (well below chance in the intended direction). Reproduces the exact sheaf-project magnitude-conflation failure formalization Section 8 was written against. Partial correlation controlling for ||psi|| collapses toward zero and flips sign (0.153); L2-normalizing psi before entropy collapses the raw correlation from -0.669 to -0.136 -- confirms most of the apparent signal was magnitude, not genuine uncertainty.",
+      "status": "FAIL -- an actively wrong-signed result, not a null. S(rho) must not appear in any future paper as a working uncertainty signal without this caveat."
+    },
+    "H5_robustness": {
+      "result": "No general DIRAC robustness advantage. Architecture-specific, perturbation-specific pattern (all deltas seed-robust, std tiny relative to effect sizes): DIRAC is uniquely least robust to additive Gaussian noise at high severity (delta=0.128 vs CNN~0.000, ViT=0.004); CNN collapses under intensity shift (0.556) and blur (0.460); ViT is most robust to intensity/blur but least robust to partial dropout (0.118).",
+      "status": "H0 for general robustness; DIRAC's specific noise-sensitivity flagged as a plausible (not confirmed) link to H4's magnitude-conflation finding."
+    },
+    "ablation_disentangling": {
+      "method": "H3-C-style topology probe (single Linear(dim_in,9), MSE, Adam lr=1e-2, 300 epochs) and H2-style nested-fraction data-efficiency curve, re-run against each of the 5 ablation checkpoints using the identical C1 extraction (model.encoder.encode_hidden(x), mean-pooled -- unmodified across all 5 ablations and D_full, since none touch the shared stem+transformer). Single probe-training seed (seed=0) only -- NOT yet checked across multiple probe-training seeds or independently-retrained ablation backbone seeds; both deferred to Phase 6.",
+      "reference_D_full": {"H3C_macro_spearman": 0.7113, "H2_AULC": 0.7053},
+      "reference_baselines": {"cnn": {"H3C_macro_spearman": 0.5647, "H2_AULC": 0.5302}, "vit": {"H3C_macro_spearman": 0.5643, "H2_AULC": 0.5432}},
+      "results": {
+        "D_classical": {"training_status": "PASS", "loss_first20pct_to_final20pct": [0.2645, 0.1666], "H3C_macro_spearman": 0.5109, "H2_AULC": 0.5091, "reading": "Collapses to (slightly below) baseline level -- expected floor: no structural branches at all, confirms baselines aren't unfairly weak."},
+        "D_-topology": {"training_status": "PASS", "loss_first20pct_to_final20pct": [0.2932, 0.1939], "H3C_macro_spearman": 0.5570, "H2_AULC": 0.5405, "reading": "DECISIVE: collapses almost entirely to baseline level (below CNN's 0.5647/0.5302 on both metrics) despite complex/prob/graph branches and L_struct remaining fully intact. Removing only L_topology removes essentially all of H2/H3-C's DIRAC advantage."},
+        "D_-complex": {"training_status": "PASS", "loss_first20pct_to_final20pct": [0.8518, 0.2138], "H3C_macro_spearman": 0.6941, "H2_AULC": 0.7009, "reading": "Essentially unchanged from D_full (0.7113/0.7053) -- psi's phase content contributes ~nothing to this specific advantage."},
+        "D_-graph": {"training_status": "PASS", "loss_first20pct_to_final20pct": [0.7156, 0.1870], "H3C_macro_spearman": 0.6649, "H2_AULC": 0.6660, "reading": "Partial, real drop from D_full but stays well above CNN/ViT baseline -- confirms H3-A/B's own prediction that GraphHead's relational mixing contributes something, but far less than L_topology."},
+        "D_-prob": {"training_status": "PASS", "loss_first20pct_to_final20pct": [0.7643, 0.2197], "H3C_macro_spearman": 0.7258, "H2_AULC": 0.6960, "reading": "Essentially unchanged from D_full, if anything marginally higher on H3-C -- rho's probabilistic/mixture construction contributes ~nothing to this advantage, consistent with H4's finding that rho's entropy signal is itself unreliable."}
+      },
+      "n_nan_inf_steps_all_ablations": 0
+    }
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [
+    "Ablation disentangling probe used a single probe-training seed (seed=0), unlike H1-H5's 3-seed probe-head checks -- effect sizes here (e.g. D_-topology's ~0.15 gap) are ~10x the seed-to-seed std observed elsewhere, so unlikely to be noise, but not formally seed-checked.",
+    "All 5 ablation backbones (like D_full/CNN/ViT before them) were each trained exactly once -- reproducibility across independently-retrained backbone seeds is explicitly Phase 6's job per spec, not attempted here.",
+    "H5's Section 21 (distribution shift across genuinely different datasets) remains an unaddressed gap -- no candidate D_B dataset exists in this vault yet."
+  ],
+  "decision_rule": "PASS iff all planned Phase 5 experiments (H1-H5 plus the 5 minimum ablations) ran to completion and were reported individually, with no result suppressed, pooled to hide an unfavorable outcome, or re-run to chase a more favorable number (IMPLEMENTATION_SPEC Anti-goals: 'do not treat H0 as a bug'). Met: H1/H3-A/H3-B/H5 nulls, H4's FAIL, and the ablation collapse are all reported as-is.",
+  "interpretation": "H1-H5 individually: H1 null, H2 strong DIRAC advantage, H3-A/B null, H3-C strong DIRAC advantage, H4 FAIL (wrong-signed uncertainty), H5 null for general robustness with an architecture-specific noise weakness. The two positive findings (H2, H3-C) were both flagged from the start as confounded with L_topology's explicit training-time gradient into the encoder -- this gate's ablation set was designed specifically to disentangle that. Result: D_-topology (remove only L_topology, keep complex/prob/graph/L_struct fully intact) collapses BOTH H2's AULC and H3-C's macro-Spearman to baseline level, while D_-complex and D_-prob leave both metrics essentially unchanged from D_full, and D_-graph produces a real but partial drop consistent with H3-A/B's own prediction. D_classical (everything stripped) lands at the expected floor. Net: DIRAC-S's entire measured advantage over parameter-matched CNN/ViT baselines is attributable almost entirely to L_topology's explicit auxiliary supervision, not to the complex/probabilistic/graph architectural machinery. The narrower, now-fully-sharpened claim for any paper drawn from this work is 'training with an explicit topology-prediction objective produces strong data-efficient, topology-predictive representations' -- a training-signal finding, not a structured-representation-architecture finding. This is precisely the kind of H0-adjacent outcome Section 32's philosophy commits to reporting plainly rather than working around.",
+  "next": "Phase 6: multi-seed reproducibility + freeze + paper decision (IMPLEMENTATION_SPEC.md Section 3). Highest-priority items: (1) re-verify D_-topology's collapse and D_full/CNN/ViT's H2/H3-C margins across >=3 independently-retrained backbone seeds, not just probe-head seeds -- this is now the paper's central and most seed-sensitive claim; (2) the same for D_-complex/D_-prob/D_-graph if scope allows; (3) write gate_reports/SUMMARY.md per spec stating plainly that the headline structured-representation hypothesis (H3, general) is NOT supported, and that H2/H3-C's advantage is a training-signal effect -- do not bury this the way covtoken's README does not bury its own falsified hypothesis.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/train_ablation_{classical,topology,complex,graph,prob}_job.py (HF Jobs, t4-medium, SMOKE=0, 50 epochs each) for training; jobs/probe_ablations_job.py (HF Job, t4-medium) for the disentangling probe, reusing jobs/probe_h3_topology_job.py and jobs/probe_h2_data_efficiency_job.py's exact methodology. Code mounted read-only from hf://datasets/Chucks90/dirac-code (density_state.py's pure_state_padded was resynced there mid-session -- was stale, caused one D_-prob ImportError, fixed). Checkpoints + data from hf://buckets/Chucks90/jobs-artifacts. Full result JSONs: processed/dirac/ablation_{name}_full_results.json and processed/dirac/ablations_probe_results_seed0.json.",
+  "human_signoff": "GO (2026-08-17, via chat instruction: \"write and proceed to next phase\", following review of the full H1-H5 + ablation summary presented in-conversation)"
+}

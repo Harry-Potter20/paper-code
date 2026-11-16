@@ -1,0 +1,77 @@
+{
+  "project": "dirac",
+  "gate": "5 (working, H1 only)",
+  "phase": "Phase 5 slice 1 - H1 representation probing (linear + nonlinear)",
+  "objective": "Do H1's linear/nonlinear probes show DIRAC-S's frozen representation carries more directly-accessible task-relevant information than the parameter-matched CNN/ViT baselines?",
+  "note": "This is NOT gate_reports/gate_5.json. Gate 5 covers H1-H5 plus the 5 ablations together; writing a terminal, signed-off gate report now would misrepresent an unfinished gate as done (IMPLEMENTATION_SPEC.md's Phase 5 is one gate, not one per hypothesis). This file records H1's result for the eventual gate_5.json to aggregate once H2-H5 and the ablations are also complete.",
+  "job_ids": {
+    "pre_audit_probe_linear": "6a81681ec97db76cbdf32c48",
+    "pre_audit_probe_nonlinear": "6a816ad4c97db76cbdf32c65",
+    "audited_probe_linear": "see processed/dirac/probe_linear_results.json for exact job_id (relaunch after the audit fixes below)",
+    "audited_probe_nonlinear": "see processed/dirac/probe_nonlinear_results.json for exact job_id"
+  },
+  "pre_audit_result_preserved_per_instruction": {
+    "note": "Preserved verbatim, not deleted or overwritten, per explicit instruction: don't rerun history away, report what actually happened. This result used a label with two real bugs (see audit below) -- it is superseded by the audited result, not wrong-and-discarded.",
+    "label_used": "tumor_size_above_median_binary: raw voxel count (not physical mm^3), median computed on POOLED train+val per dataset (leaked val into its own threshold)",
+    "linear": {"dirac_val_auroc": 0.5201674277016743, "cnn_val_auroc": 0.4659436834094368, "vit_val_auroc": 0.4328386605783867,
+      "dirac_vs_vit": {"diff": 0.08732876712328763, "p": 0.039683450426060585}},
+    "nonlinear": {"dirac_val_auroc": 0.5123668188736681, "cnn_val_auroc": 0.4975266362252664, "vit_val_auroc": 0.4179984779299848,
+      "dirac_vs_vit": {"diff": 0.0943683409436833, "p": 0.05533143566720922}}
+  },
+  "pre_lock_audit": {
+    "trigger": "Before interpreting the near-chance pre-audit result, a 4-point audit was run: (1) is tumor volume actually encoded in the model's input given the preprocessing pipeline, (2) does the binary median split discard a real monotonic signal, (3) is the train/val split implementation actually leak-free, (4) is the null an artifact of the probe type. Do-not-retrain / do-not-change-architecture / do-not-start-H2 was observed until this audit completed.",
+    "item_1_input_scale_preservation": {
+      "finding": "CONFIRMED real limitation, not fully fixable without reopening Phase 1's frozen preprocessing. data/preprocess.py's resize_to_fixed computes a PER-CASE zoom factor (target_shape / cropped_shape) to force every case's foreground-cropped region onto a fixed 128^3 grid. Directly queried Phase 1's own QC data (qc.cropped_shape, already stored in the frozen manifests, no new computation needed): cropped-region voxel volume varies up to 27.24x within KiTS23 alone (min 3.71M, max 101.08M voxels), 6.45x in MSD Pancreas, 7.73x in MSD Liver (coefficient of variation 0.37-0.53 across all three). Since every case gets rescaled to the identical 128^3 output regardless of this variation, the effective mm/voxel in what the model actually sees differs per case, proportional to that patient's own body/scan extent -- partially confounding absolute physical tumor size with body/FOV size in the model's actual input. This affects all three architectures identically (not an unfair confound between them), but it does lower the ceiling on what any architecture could recover about absolute physical volume from its input, independent of representational quality.",
+      "reproduce": "HF Job (cpu-basic), reads qc.cropped_shape directly from the frozen {kits,pancreas,liver}_manifest.jsonl files, no materialize/GPU needed."
+    },
+    "item_2_binary_split_discards_signal": {
+      "finding": "CONFIRMED useful -- see corrected_checks.regression_log_volume below. A continuous regression diagnostic (Linear(256,1) or the nonlinear head trained on log1p(volume_mm3), scored via Spearman rank correlation as the primary statistic since tumor volumes are strongly right-skewed) recovers a real, statistically significant monotonic signal for multiple architectures across both probe types that the binary median-split classification (AUROC ~0.48-0.55, chance) missed entirely."
+    },
+    "item_3_split_leakage": {
+      "finding": "CONFIRMED real bug, fixed. compute_size_labels (pre-audit) grouped tumor counts by dataset only, computing the per-dataset median over the POOLED train+val cases -- meaning validation tumor volumes contributed to the very threshold used to label validation. Fixed in compute_labels_and_volumes: median computed from TRAIN rows only per dataset, applied to both splits. A regression test (tests/test_probing.py::test_median_threshold_is_train_only_not_leaked_from_val) constructs a case where a single extreme validation volume would have shifted a pooled median, and confirms the correct implementation is unaffected."
+    },
+    "item_4_probe_type_artifact": {
+      "finding": "Checked, not the dominant explanation. The classification null replicates across both linear and nonlinear probes (robust). The regression signal is present in both probe types too, but its exact per-architecture ranking is NOT stable between linear and nonlinear reruns (linear: ViT(0.286)>DIRAC(0.229)>CNN(0.152, ns); nonlinear: CNN(0.309)>ViT(0.275)>DIRAC(0.200)) -- read as noise in the per-architecture ordering at n=145 val cases, not a reliable probe-type-dependent recovery of hidden signal for any one architecture."
+    },
+    "second_bug_found_during_the_audit": "tumor_voxel_count used raw voxel count from segmentation.nii.gz, which is preserved at each scan's ORIGINAL native resolution (never resampled to volume.npy's shared 1.5mm isotropic spacing -- materialize_kits_job.py/materialize_msd_job.py both shutil.move the raw downloaded mask as-is). Raw voxel count therefore conflated true tumor size with each scan's own native voxel spacing, which varies by scanner/protocol. Fixed via tumor_volume_mm3, using the mask's own header zooms to compute physical mm^3. Regression test: tests/test_probing.py::test_tumor_volume_mm3_uses_physical_voxel_size_not_raw_count."
+  },
+  "corrected_checks": {
+    "label": "tumor_volume_mm3 (physical units, native-mask header zooms), binarized above/below the TRAIN-ONLY per-dataset median for classification; log1p-transformed directly for regression",
+    "linear": {
+      "n_train": 533, "n_val": 145,
+      "classification": {
+        "dirac_val_auroc": 0.5506280928816141, "dirac_ci95": [0.45615029885486336, 0.6451058869083648],
+        "cnn_val_auroc": 0.5258850399695472, "cnn_ci95": [0.431231379245239, 0.6205387006938553],
+        "vit_val_auroc": 0.5407308717167871, "vit_ci95": [0.4463349290003357, 0.6351268144332386],
+        "dirac_vs_cnn": {"diff": 0.02474305291206691, "p": 0.555815839861284},
+        "dirac_vs_vit": {"diff": 0.009897221164826941, "p": 0.8523228710368347}
+      },
+      "regression_log_volume": {
+        "dirac": {"spearman_rho": 0.22920822430359103, "spearman_p": 0.005997001499250375, "r_squared": 0.008809399529102202},
+        "cnn": {"spearman_rho": 0.15212776740655237, "spearman_p": 0.07296351824087956, "r_squared": -0.01856479485189677},
+        "vit": {"spearman_rho": 0.28573284299026097, "spearman_p": 0.0009995002498750624, "r_squared": 0.03667562824478965}
+      }
+    },
+    "nonlinear": {
+      "n_train": 533, "n_val": 145,
+      "classification": {
+        "dirac_val_auroc": 0.5479634564141607, "dirac_ci95": [0.45343043072868366, 0.6424964820996376],
+        "cnn_val_auroc": 0.4800152264940998, "cnn_ci95": [0.3850680578812717, 0.5749623951069278],
+        "vit_val_auroc": 0.5137038446897602, "vit_ci95": [0.4184264425566982, 0.6089812468228221],
+        "dirac_vs_cnn": {"diff": 0.06794822992006089, "p": 0.19429099831346974},
+        "dirac_vs_vit": {"diff": 0.03425961172440051, "p": 0.5540046715278479}
+      },
+      "regression_log_volume": {
+        "dirac": {"spearman_rho": 0.20036431306527674, "spearman_p": 0.02048975512243878, "r_squared": 0.01348382732663711},
+        "cnn": {"spearman_rho": 0.3091405970917466, "spearman_p": 0.0004997501249375312, "r_squared": 0.04163675428057334},
+        "vit": {"spearman_rho": 0.2754490192973103, "spearman_p": 0.001999000499750125, "r_squared": 0.031465131647806954}
+      }
+    }
+  },
+  "dataset_diversity_caveat": "All three datasets are tumor-segmentation challenges sharing similar oncology-CT acquisition characteristics and near-100% pathology prevalence. This doesn't undermine H1's tumor-volume question (answerable within this data), but it is a real, named limitation for H5 (robustness / distribution shift, experimental-spec Section 21, which explicitly wants train/test on genuinely different datasets D_A != D_B) and for any claim about generalization to a non-enriched population. Flagged here rather than left implicit, to be revisited when H5 is scoped.",
+  "status": "H0 for classification (no significant DIRAC advantage); weak-but-real monotonic signal present for all three architectures on the continuous diagnostic, with no stable ranking between them",
+  "interpretation": "Two real label bugs (train+val-pooled median threshold; raw voxel count instead of physical mm^3) were caught by a pre-lock audit and fixed before this result was treated as final -- both regression-tested. A third, genuine but not-fully-fixable limitation was confirmed with real numbers from Phase 1's own QC data: the fixed-grid resize step confounds absolute physical tumor size with each patient's own body/scan-region size (crop-region voxel volume varies up to 27x within KiTS23 alone), affecting all three architectures equally. With correct labels: (1) Binary classification (size above/below the train-only per-dataset median) remains a robust null across both linear and nonlinear probes -- no architecture's AUROC (0.48-0.55) is significantly different from any other's, and no comparison's CI excludes zero. (2) The continuous regression diagnostic (log-volume, Spearman as primary statistic per the audit's own recommendation) recovers real, mostly-significant monotonic signal for all three architectures that the binary split had discarded entirely -- exactly the phenomenon the audit was checking for. However, this signal is weak (R^2 near zero, 0.009-0.042, for all three) and its per-architecture ranking is NOT stable between the linear and nonlinear probe reruns (order flips: ViT>DIRAC>CNN(ns) vs CNN>ViT>DIRAC), consistent with noise at n=145 val cases rather than a reliable architecture-dependent effect. Taken together: H1 does not show DIRAC's representation carrying more decodable tumor-volume information than the parameter-matched baselines, under either a binary or continuous target, in either probe regime. All three representations carry a small amount of real information about tumor volume (via the regression diagnostic), roughly comparably, likely bounded in part by the confirmed input-scale confound above. Per the project's own H0-honesty stance, this is reported as the actual result, not adjusted after the fact to look more favorable -- the pre-audit result is preserved above rather than deleted.",
+  "next": "H2 (data efficiency), H3 (structural probes -- explicitly the more central test of DIRAC's actual inductive-bias hypothesis: does z encode geometry/topology/relational structure, rather than immediately testing clinical severity), H4 (uncertainty/magnitude-conflation check), H5 (robustness) and the 5 ablations remain, each a separate slice. gate_reports/gate_5.json gets assembled once all of H1-H5 + ablations are done, reporting each individually per IMPLEMENTATION_SPEC.md's explicit instruction.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/probe_linear_job.py and probe_nonlinear_job.py (HF Jobs, t4-medium, run sequentially so the nonlinear job reuses the linear job's cached z features). Code mounted read-only from hf://datasets/Chucks90/dirac-code (includes eval/stats.py, ported from covtoken/eval/stats.py). Data + checkpoints mounted from hf://buckets/Chucks90/jobs-artifacts. z-feature cache (processed/dirac/probe_features/{arch}_{split}_z.npz) is deliberately decoupled from label/threshold logic so label fixes never risk a silent stale-label reuse. Outputs: processed/dirac/probe_{linear,nonlinear}_results.json in the same bucket.",
+  "human_signoff": null
+}

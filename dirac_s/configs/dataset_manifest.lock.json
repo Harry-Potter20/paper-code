@@ -1,0 +1,16 @@
+{
+  "datasets_included": [
+    "kits23",
+    "pancreas",
+    "liver"
+  ],
+  "n_cases_total": 801,
+  "n_cases_qc_passed": 801,
+  "qc_pass_rate": 1.0,
+  "split_counts": {
+    "train": 533,
+    "val": 145,
+    "test": 123
+  },
+  "leakage_check": []
+}

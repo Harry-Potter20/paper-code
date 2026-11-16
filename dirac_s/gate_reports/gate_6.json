@@ -1,0 +1,63 @@
+{
+  "project": "dirac",
+  "gate": 6,
+  "phase": "Phase 6 - Multi-seed, freeze, paper decision",
+  "objective": "Do Gate 5's critical results (the D_-topology disentangling finding, and D_full's advantage over CNN/ViT on H2/H3-C) replicate across independently-retrained backbone seeds, not just re-seeded probe heads on a single frozen checkpoint?",
+  "job_ids": {
+    "training_seed1": {"pretrain": "6a82f47bcd3824960fcbaebe", "cnn": "6a82f482cd3824960fcbaec0", "vit": "6a82f489e55292eada79b532", "topology": "6a82f491cd3824960fcbaec4"},
+    "training_seed2": {"pretrain": "6a831393cd3824960fcbb329", "cnn": "6a83139ce55292eada79b61c", "vit": "6a8313a3cd3824960fcbb32b", "topology": "6a8313abcd3824960fcbb331"},
+    "multiseed_probe": "6a833121e55292eada79b74e"
+  },
+  "design": {
+    "training_stability_recheck": "D_full, CNN-baseline, ViT-baseline, and D_-topology were each independently retrained at seed=1 and seed=2 (seed=0 already existed from Phases 3/4/5) using the identical recipe/budget as their original runs -- no hyperparameter changes.",
+    "backbone_seed_probe": "jobs/probe_multiseed_job.py re-runs the exact H3-C topology probe and H2 data-efficiency AULC methodology (same target, same single-Linear probe architecture, same probe_seed=0) against all 12 checkpoints (4 architectures x 3 backbone seeds), extracting model.encoder.encode_hidden(x) (or the architecture's own equivalent) mean-pooled -- identical extraction to gate_5_h3c_topology.json/gate_5_h2_data_efficiency.json/probe_ablations_job.py.",
+    "scope_note": "Only D_full, CNN, ViT, and D_-topology were re-seeded -- D_-topology because it is the single most decisive Gate-5 finding (the whole disentangling claim); D_classical/D_-complex/D_-graph/D_-prob remain single-seed (seed=0 only), a real, explicitly acknowledged scope limit, not an oversight."
+  },
+  "checks": {
+    "training_stability_all_seeds": {
+      "D_full_pretrain": {"seed0": [0.73, 0.21], "seed1": [0.659, 0.211], "seed2": [0.771, 0.209], "all_pass": true, "all_zero_nan_inf": true},
+      "CNN_baseline": {"seed1": [0.226, 0.155], "seed2": [0.226, 0.154], "all_pass": true, "all_zero_nan_inf": true},
+      "ViT_baseline": {"seed1": [0.239, 0.168], "seed2": [0.239, 0.170], "all_pass": true, "all_zero_nan_inf": true},
+      "D_-topology": {"seed0": [0.293, 0.194], "seed1": [0.283, 0.194], "seed2": [0.284, 0.191], "all_pass": true, "all_zero_nan_inf": true},
+      "note": "pairs are [loss_first_20pct_mean, loss_final_20pct_mean]"
+    },
+    "h3c_macro_spearman_by_seed": {
+      "dirac": {"seed0": 0.7076, "seed1": 0.7220, "seed2": 0.7188, "mean": 0.7162, "std": 0.0075},
+      "cnn": {"seed0": 0.5657, "seed1": 0.5788, "seed2": 0.5734, "mean": 0.5726, "std": 0.0066},
+      "vit": {"seed0": 0.5581, "seed1": 0.5888, "seed2": 0.5525, "mean": 0.5664, "std": 0.0196},
+      "topology": {"seed0": 0.5647, "seed1": 0.5077, "seed2": 0.5757, "mean": 0.5494, "std": 0.0365}
+    },
+    "h2_aulc_by_seed": {
+      "dirac": {"seed0": 0.6990, "seed1": 0.7102, "seed2": 0.7038, "mean": 0.7043, "std": 0.0056},
+      "cnn": {"seed0": 0.5261, "seed1": 0.5378, "seed2": 0.5340, "mean": 0.5326, "std": 0.0060},
+      "vit": {"seed0": 0.5252, "seed1": 0.5540, "seed2": 0.5149, "mean": 0.5313, "std": 0.0202},
+      "topology": {"seed0": 0.5429, "seed1": 0.4967, "seed2": 0.5498, "mean": 0.5298, "std": 0.0289}
+    },
+    "seed_ci_vs_baseline_point_estimate": {
+      "method": "t-distribution 95% CI, n=3, df=2, t_crit=4.303, sample std (ddof=1) -- n too small for a normal approximation to be defensible; ddof=1 used deliberately since ddof=0 (population std) understates uncertainty at this sample size and was caught and corrected during this gate's own drafting, not shipped uncorrected",
+      "D_full_h3c_95ci": [0.6974, 0.7349],
+      "D_full_h2_95ci": [0.6903, 0.7183],
+      "cnn_h3c_95ci": [0.5563, 0.5890],
+      "vit_h3c_95ci": [0.5179, 0.6150],
+      "D_full_excludes_cnn_and_vit_point_estimates": true,
+      "D_full_CI_does_not_overlap_cnn_CI_at_all": true,
+      "topology_h3c_95ci": [0.4586, 0.6401],
+      "topology_h2_95ci": [0.4581, 0.6015],
+      "topology_CI_includes_both_cnn_and_vit_point_estimates": true,
+      "interpretation": "D_full's advantage over CNN/ViT is statistically robust across backbone seeds -- its CI excludes both baselines' point estimates on both metrics, and does not even overlap CNN's own CI. D_-topology's mean is statistically indistinguishable from CNN/ViT on both metrics (its CI comfortably contains both) -- the Gate-5 collapse-to-baseline finding is NOT a single-seed artifact."
+    }
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0, 1, 2],
+  "data_gaps": [
+    "D_classical/D_-complex/D_-graph/D_-prob remain single-seed (seed=0) -- not re-seeded in this gate, real scope limit.",
+    "Only H2/H3-C were re-seeded at the backbone level (the two positive findings the paper's headline claim rests on). H1/H3-A/H3-B/H4/H5 were not re-run at additional backbone seeds -- their Gate-5 verdicts (nulls and one FAIL) were not the ones requiring reproducibility confirmation to support or refute the headline claim.",
+    "Section 21 (distribution shift across genuinely different datasets) remains unaddressed, unchanged from Gate 5."
+  ],
+  "decision_rule": "PASS iff the Gate 5 verdict (D_full's H2/H3-C advantage is real; D_-topology collapses that advantage to baseline level) is stable across seeds -- operationalized as: D_full's 95% CI (n=3 backbone seeds) excludes both CNN's and ViT's point estimates on both metrics, AND D_-topology's 95% CI contains both CNN's and ViT's point estimates on both metrics. Both conditions met.",
+  "interpretation": "Both training-stability (all 12 seed x architecture runs PASS, 0 NaN/Inf) and the actual scientific reproducibility check (backbone-seed CI analysis above) confirm Gate 5's central finding is not a training-seed fluke. D_full's margin over CNN/ViT is tight and highly consistent (std 0.006-0.008 on both metrics, CI not even overlapping CNN's own CI) -- about as clean a reproducible effect as this vault has produced. D_-topology is reproducibly collapsed to baseline level, but also reproducibly noisier across seeds (std 0.029-0.037, roughly 4-6x D_full's own seed variance) -- ablating the topology signal doesn't just remove the mean advantage, it destabilizes the representation's seed-to-seed consistency too, a real secondary finding worth carrying into the paper alongside the primary one.",
+  "next": "Write gate_reports/SUMMARY.md and README.md per IMPLEMENTATION_SPEC.md's Phase 6 instruction -- state plainly that the central 'structured representation provides architecture-level advantage' hypothesis is refuted at DIRAC-S's scale (the measured advantage is a training-signal/L_topology effect, reproducibly so), per experimental-spec Section 27's Paper Decision Gate. Human makes the paper go/no-go call from there. DIRAC-M (Med_Architecture_Research/dirac_m/) is the explicitly gated next step if that call is GO on a scale-up test of whether this finding is itself a small-data artifact.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/{pretrain_dirac,train_baseline_cnn,train_baseline_vit,train_ablation_topology}_job.py (HF Jobs, t4-medium, SEED=1,2) for training; jobs/probe_multiseed_job.py (HF Job, t4-medium) for the seed-reproducibility probe. Full result JSONs: processed/dirac/probe_multiseed_results.json.",
+  "human_signoff": "GO (2026-08-17, via chat instruction \"proceed\", following review of the multi-seed probe results presented in-conversation)"
+}

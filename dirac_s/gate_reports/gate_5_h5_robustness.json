@@ -1,0 +1,39 @@
+{
+  "project": "dirac",
+  "gate": "5 (working, H5 only)",
+  "phase": "Phase 5 slice 6 - H5, robustness (experimental-spec Section 20)",
+  "objective": "For clinically-plausible perturbations, does DIRAC-S degrade less than the parameter-matched CNN/ViT baselines (Delta_DIRAC vs Delta_baseline under matched perturbation severity)?",
+  "note": "This is NOT gate_reports/gate_5.json. Section 21 (distribution shift, train D_A test genuinely-different D_B) is NOT attempted here -- a real, unaddressed gap flagged since the H1 audit: all three materialized datasets are similar oncology-CT tumor-segmentation challenges, no genuinely different D_B exists in this vault's current data. This slice covers only Section 20's controlled within-distribution perturbations.",
+  "job_ids": {"seed_0": "see processed/dirac/probe_h5_robustness_results_seed0.json", "seed_1": "see ..._seed1.json", "seed_2": "see ..._seed2.json"},
+  "design": {
+    "task_and_probe": "Same topology target and Linear(dim_in,9) probe methodology as H3-C/H2, for continuity. A probe is trained ONCE per architecture on clean train h (H3-C's cache), then reused unmodified to score both clean val h (baseline) and perturbed val h (a fresh forward pass on perturbed input volumes) -- degradation is measured on the identical probe, not a re-fit one.",
+    "matched_severity": "All three architectures see the IDENTICAL perturbed volume per case per severity (deterministic per-case seed via hash(case_id)), for a fair, matched-severity comparison.",
+    "perturbations": {
+      "gaussian_noise": "additive N(0,sigma^2), sigma in {0.05 (low), 0.15 (high)}",
+      "intensity_shift": "x*scale+offset, (scale,offset) in {(0.9,0.05) (low), (0.7,0.15) (high)}",
+      "blur": "scipy.ndimage.gaussian_filter, sigma_vox in {1.0 (low), 2.5 (high)}",
+      "partial_dropout": "model/losses.py's generate_block_mask/upsample_token_mask_to_voxels at mask_ratio in {0.10 (low), 0.25 (high)} -- deliberately much lower than training's 0.75 MAE ratio, which is a training objective, not a robustness probe"
+    },
+    "no_dirac_s_modification": "N_DIRAC-S stayed 1,552,520 throughout -- frozen checkpoints only."
+  },
+  "checks": {
+    "clean_baseline": {
+      "dirac": {"mean": 0.7144, "std": 0.0118}, "cnn": {"mean": 0.5638, "std": 0.0027}, "vit": {"mean": 0.5609, "std": 0.0098}
+    },
+    "degradation_delta_mean_std_across_3_seeds": {
+      "gaussian_noise_low": {"dirac": [0.0095, 0.0028], "cnn": [-0.0143, 0.0012], "vit": [0.0013, 0.0001], "most_robust": "cnn", "least_robust": "dirac"},
+      "gaussian_noise_high": {"dirac": [0.1276, 0.0023], "cnn": [-0.0002, 0.0044], "vit": [0.0042, 0.0017], "most_robust": "cnn", "least_robust": "dirac"},
+      "intensity_shift_low": {"dirac": [0.0230, 0.0068], "cnn": [-0.0245, 0.0030], "vit": [0.0029, 0.0036], "most_robust": "cnn", "least_robust": "dirac"},
+      "intensity_shift_high": {"dirac": [0.4879, 0.0065], "cnn": [0.5560, 0.0010], "vit": [0.1682, 0.0164], "most_robust": "vit", "least_robust": "cnn"},
+      "blur_low": {"dirac": [0.0728, 0.0021], "cnn": [0.1155, 0.0052], "vit": [-0.0044, 0.0017], "most_robust": "vit", "least_robust": "cnn"},
+      "blur_high": {"dirac": [0.1704, 0.0067], "cnn": [0.4601, 0.0125], "vit": [0.0180, 0.0109], "most_robust": "vit", "least_robust": "cnn"},
+      "partial_dropout_low": {"dirac": [0.0113, 0.0076], "cnn": [-0.0197, 0.0015], "vit": [0.0292, 0.0098], "most_robust": "cnn", "least_robust": "vit"},
+      "partial_dropout_high": {"dirac": [0.0357, 0.0185], "cnn": [-0.0172, 0.0095], "vit": [0.1181, 0.0086], "most_robust": "cnn", "least_robust": "vit"}
+    }
+  },
+  "status": "No general DIRAC robustness advantage. A real, seed-robust (std tiny relative to effect sizes across all 8 conditions x 3 seeds), but ARCHITECTURE-SPECIFIC and PERTURBATION-SPECIFIC pattern: each architecture has a distinct, reproducible weakness, and DIRAC is not the most robust architecture for any perturbation family tested.",
+  "interpretation": "At LOW severity, all three architectures are essentially unaffected (deltas within +-0.03, several even slightly negative/improving, most plausibly noise around zero rather than genuine improvement) -- mild, realistic perturbation does not meaningfully differentiate the architectures. At HIGH severity, three sharply different, individually reproducible weaknesses emerge: (1) DIRAC is consistently the LEAST robust to additive Gaussian noise (delta 0.128 vs CNN's ~0.000 and ViT's 0.004) -- the only condition where DIRAC is clearly worst, not just non-best. (2) CNN is consistently the LEAST robust to both intensity shift (0.556, its topology-probe performance collapses to near-zero, 0.006-0.013 absolute) and blur (0.460, similarly collapsing to ~0.10 absolute) -- CNN's plain convolutional stem appears far more sensitive to global intensity remapping and loss of high-frequency detail than either DIRAC or ViT. (3) ViT is consistently the LEAST robust to partial information dropout (0.118) while being simultaneously the MOST robust architecture to both intensity shift and blur by a wide margin (0.168 and 0.018 respectively, both far better than DIRAC or CNN) -- plausibly because ViT's single large-kernel (16^3) patchify stem inherently pools over a wide receptive field per token, which may make it more resilient to smooth global changes (blur, intensity) but more exposed when entire patches lose information outright (dropout removes whole 16^3 blocks that ViT's patchify stem depends on more directly, since it has no smaller-scale convolutional structure to fall back on within a masked-out region, unlike CNN's multi-stage stem or DIRAC's own convolutional stem). DIRAC's specific noise-sensitivity is a plausible (not confirmed) point of connection to H4's finding (gate_reports/gate_5_h4_uncertainty.json): H4 showed DIRAC's rho/entropy signal is substantially a magnitude proxy rather than genuine uncertainty; if DIRAC's complex (psi) and probabilistic (rho) branches are more sensitive to raw voxel-magnitude perturbation than CNN/ViT's simpler pooling, that could explain both findings via a shared mechanism -- flagged as a hypothesis for a future ablation (D_-complex or D_-prob) to actually test, not asserted here.",
+  "next": "H1-H5 are now all complete. Only the 5 ablations (D_-complex, D_-prob, D_-graph, D_-topology, D_classical) remain before gate_reports/gate_5.json can be assembled. This result adds a concrete, well-motivated question for D_-complex/D_-prob specifically: does removing the complex/probabilistic branches change DIRAC's distinctive noise-sensitivity, supporting or undermining the magnitude-conflation connection to H4 hypothesized above.",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/probe_h5_robustness_job.py (HF Job, t4-medium -- needs fresh forward passes on perturbed volumes, not reusable from any prior cache). Code mounted read-only from hf://datasets/Chucks90/dirac-code. Data + checkpoints + H3-C's clean-representation cache mounted from hf://buckets/Chucks90/jobs-artifacts. Env: SEED=0,1,2 (3 separate runs). Outputs: processed/dirac/probe_h5_robustness_results_seed{0,1,2}.json.",
+  "human_signoff": null
+}

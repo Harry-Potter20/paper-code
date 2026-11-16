@@ -1,0 +1,45 @@
+{
+  "project": "dirac",
+  "gate": 4,
+  "phase": "Phase 4 - Baselines (parameter-matched CNN3D + ViT3D, real trained models)",
+  "objective": "Are baselines genuinely parameter-matched?",
+  "job_ids": {
+    "cnn": "6a81103c1f5885ae605bc2cf",
+    "vit": "6a8110431f5885ae605bc2d3"
+  },
+  "checks": {
+    "n_dirac_s": 1552520,
+    "cnn": {
+      "n_params": 1546240,
+      "delta_pct": 0.405,
+      "n_steps": 13300,
+      "n_nan_inf_steps": 0,
+      "loss_total_first_20pct_mean": 0.2268506644755826,
+      "loss_total_final_20pct_mean": 0.15521333525727565,
+      "decreasing_in_tail": true,
+      "grad_norm_mean": 1.4705058199749854,
+      "wall_clock_training_s": 2967.8
+    },
+    "vit": {
+      "n_params": 1487144,
+      "delta_pct": 4.211,
+      "n_steps": 13300,
+      "n_nan_inf_steps": 0,
+      "loss_total_first_20pct_mean": 0.23762955456636006,
+      "loss_total_final_20pct_mean": 0.1687602406325645,
+      "decreasing_in_tail": true,
+      "grad_norm_mean": 1.2379476408201053,
+      "wall_clock_training_s": 2223.4
+    },
+    "tolerance_pct": 5.0
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [],
+  "decision_rule": "PASS iff both |N_DIRAC-N_CNN|/N_DIRAC and |N_DIRAC-N_VIT|/N_DIRAC are within the locked 5% tolerance (IMPLEMENTATION_SPEC.md Gate 4 row), verified on the real trained model objects (model/param_count.py's exact_param_count), not just Phase 0b's architecture skeletons",
+  "interpretation": "Both baselines trained with their own standard MAE-style reconstruction recipe (L_recon + L_masked only — not DIRAC's L_struct/L_topology, which have no non-contrived CNN/ViT equivalent per formalization Section 9's distinction between the D_classical ablation and these independently-reasonable baselines), under a literally identical optimization budget to DIRAC-S's own full run (gate_reports/gate_3.json): same 533 real train cases, 50 epochs, 13300 steps, batch size 2, AdamW lr=1e-4, grad-clip 1.0, mask ratio 0.75 — isolating the comparison to architecture + recipe per experimental-spec Section 17. Both re-verified exact param counts on the real trained nn.Module objects (not re-derived from Phase 0b's cached skeleton numbers) and got identical values to the locked ledger (CNN 1,546,240 / ViT 1,487,144) — no architecture drift between Phase 0b's skeleton and this phase's real instantiation. Both converged cleanly: CNN loss 0.227->0.155 (0 NaN/Inf, 49.5 min training), ViT loss 0.238->0.169 (0 NaN/Inf, 37.1 min training) — both noticeably faster than DIRAC-S's own 97-minute full run, consistent with having fewer forward passes per step (2 vs DIRAC's 3) and no graph/fusion/topology branches. CNN3DBaseline.encode_hidden() and ViT3DBaseline.encode_hidden() were added this phase (mirroring ComplexEncoder's existing encode_hidden/heads split) since both previously pooled to a single (B,z_dim) vector before any external code could reconstruct a volume from it; Decoder3D and the masking utilities from model/losses.py were reused unmodified for both, since both architectures downsample 128^3->8^3 by the same 16x total factor as DIRAC's own stem despite reaching it differently (CNN: four stride-2 blocks; ViT: one stride-16 patchify). One real bug caught locally before any GPU spend: the first Decoder3D channel schedule chosen for the CNN baseline (288->144->72->36->1) failed GroupNorm's divisibility requirement at the 72->36 step (36 not divisible by 8) — caught by the local pytest suite, fixed to 288->128->64->32->1.",
+  "next": "Phase 5 (probing / transfer / uncertainty / robustness / ablations) — DIRAC-S, CNN3DBaseline and ViT3DBaseline checkpoints are all now available for comparison",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/train_baseline_cnn_job.py and train_baseline_vit_job.py (HF Jobs, t4-medium, run in parallel). Code mounted read-only from hf://datasets/Chucks90/dirac-code (includes this phase's encode_hidden additions to baselines/cnn3d.py and baselines/vit3d.py). Data mounted from hf://buckets/Chucks90/jobs-artifacts. Env: SMOKE=0. Outputs: processed/dirac/baseline_{cnn,vit}_full_results.json (report + full per-step history) and processed/dirac/checkpoints/baseline_{cnn,vit}_full_seed0.pt in the same bucket.",
+  "human_signoff": "GO"
+}

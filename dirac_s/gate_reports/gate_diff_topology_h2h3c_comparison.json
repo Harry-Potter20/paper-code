@@ -1,0 +1,55 @@
+{
+    "project": "dirac",
+    "gate": "diff_topology_h2h3c_comparison",
+    "phase": "Diff-topology follow-on - H2/H3-C comparison against D_full",
+    "objective": "Does the differentiable topology-fidelity loss (LAM_TD=0.01, gate_diff_topology_smoke_lamtd0p01.json PASS) change DIRAC-S's H2/H3-C story versus D_full's own signed-off numbers?",
+    "checkpoint": "/mnt/processed/dirac/checkpoints/pretrain_diff_topology_full_seed0_lamtd0p01.pt",
+    "dim_in": 64,
+    "probe_seeds": [
+        0,
+        1,
+        2
+    ],
+    "target": "compute_persistence_summary(X), same 9-dim log1p target as gate_5_h3c_topology.json / gate_5_h2_data_efficiency.json, not recomputed differently.",
+    "extraction": "C1 pattern: encoder.encode_hidden(x) pre-fusion h, mean-pooled over tokens -- identical to D_full's own C1_dirac_h extraction in gate_5_h3c_topology.json.",
+    "checks": {
+        "h3c_macro_spearman": {
+            "difftopo_lamtd0p01": {
+                "by_probe_seed": [
+                    0.716861006241849,
+                    0.7184767099188756,
+                    0.7416591664837756
+                ],
+                "mean": 0.7256656275481667
+            },
+            "d_full_c1_dirac_h": {
+                "by_probe_seed": [
+                    0.6917396109978476,
+                    0.7171881227116481,
+                    0.7249440852992478
+                ],
+                "mean": 0.7113
+            },
+            "delta_mean": 0.014365627548166615
+        },
+        "h2_aulc": {
+            "difftopo_lamtd0p01": {
+                "by_probe_seed": [
+                    0.7083689639070219,
+                    0.7030505013300532,
+                    0.7321447752965703
+                ],
+                "mean": 0.7145214135112151
+            },
+            "d_full": {
+                "by_probe_seed": [
+                    0.7164437941118749,
+                    0.6966483439563269,
+                    0.7029
+                ],
+                "mean": 0.7053
+            },
+            "delta_mean": 0.009221413511215082
+        }
+    }
+}

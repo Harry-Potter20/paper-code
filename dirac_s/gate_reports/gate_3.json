@@ -1,0 +1,51 @@
+{
+  "project": "dirac",
+  "gate": 3,
+  "phase": "Phase 3 - Pretraining (smoke run)",
+  "objective": "Does pretraining converge without instability?",
+  "job_id": "6a80e1b81f5885ae605bbb86",
+  "checks": {
+    "n_cases": 48,
+    "n_epochs": 3,
+    "batch_size": 2,
+    "n_steps": 72,
+    "n_nan_inf_steps": 0,
+    "loss_total_first_20pct_mean": 27.01601587023054,
+    "loss_total_final_20pct_mean": 3.623643602643694,
+    "loss_total_final_20pct_first_half_mean": 4.475819894245693,
+    "loss_total_final_20pct_second_half_mean": 2.771467311041696,
+    "decreasing_in_tail": true,
+    "grad_norm_mean": 37.315875424279106,
+    "grad_norm_max_clip": 1.0
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [],
+  "decision_rule": "PASS iff 0 NaN/Inf steps AND mean(loss_total) over the second half of the final 20% of steps <= mean(loss_total) over the first half of that same window (a still-converging-at-the-tail check, not just first-epoch-vs-last-epoch)",
+  "interpretation": "Smoke run against REAL data (48 cases, 16 per dataset from kits/pancreas/liver's frozen train-split manifest, real 128^3 preprocessed volumes) at the real target scale (grid_shape=8x8x8, 512 tokens), on HF Jobs t4-medium GPU. All four pretraining objectives (L_recon, L_masked, L_struct, L_topology) wired per formalization Section 7, plus the ZBroadcast fix ensuring GraphHead and FusionHead (which Section 7's four objectives, read literally, never touch) also receive real gradient via the reconstruction path. 0 NaN/Inf steps across all 72. Loss fell substantially and monotonically by epoch (27.0 -> 19.4 -> 10.1 -> 2.1 across epoch boundaries), and kept decreasing within the smoke run's own final-20% window (4.48 -> 2.77), satisfying the decision rule with margin, not just barely. Gradient norm rose through the fitting phase (18 -> 51 peak around step 45) then fell as loss dropped (51 -> 24 by the final step) -- the shape expected of a model actually fitting rather than oscillating; gradient clipping (max_norm=1.0) was active throughout as a stability safeguard but never needed to mask instability (no NaN/Inf occurred). Two real fixes were required to get here, not just wiring: (1) gate_2.json's flagged bucket-read latency (~100-150s/case) was eliminated by materializing the case subset to local disk once via a parallel ThreadPoolExecutor copy, plus caching each case's real ph_vector once via a ProcessPoolExecutor instead of recomputing gudhi every epoch (data/local_cache.py); (2) a latent bug in compute_persistence_summary, present since Phase 0b and never caught by Gate 0/2 (which only checked finiteness, never magnitude), returned unbounded raw persistence statistics (observed up to ~19,561 on synthetic data) -- this drove L_topology's loss to ~65M in an initial local dry run before being fixed with a log1p transform at the source. This is exactly the class of finding Gate 3's smoke-before-full-run discipline exists to catch cheaply.",
+  "next": "Phase 4 (baselines) — the full run below is complete; per IMPLEMENTATION_SPEC.md Phase 3, the full run does not require a separate gate, its checkpoint feeds Phase 4/5's gates directly",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/pretrain_dirac_job.py (HF Job, t4-medium). Code mounted read-only from hf://datasets/Chucks90/dirac-code (model/+data/ packages, includes the log1p fix to model/topology.py and the new masking/PHPredictHead/ZBroadcast/local_cache pieces). Data mounted from hf://buckets/Chucks90/jobs-artifacts. Env: SMOKE=1, N_SMOKE_CASES_PER_DATASET=16. Output: processed/dirac/gate3_smoke_results.json (report + full per-step history) and processed/dirac/checkpoints/pretrain_smoke_seed0.pt in the same bucket.",
+  "human_signoff": "GO",
+  "full_run": {
+    "note": "Per IMPLEMENTATION_SPEC.md Phase 3, the full run does not get a separate gate — recorded here as the historical record of what actually produced the checkpoint Phase 4/5 will use. Authorized explicitly by the user after Gate 3's smoke PASS above.",
+    "job_id": "6a80ec871f5885ae605bbd1a",
+    "checks": {
+      "n_cases": 533,
+      "n_epochs": 50,
+      "batch_size": 2,
+      "n_steps": 13300,
+      "n_nan_inf_steps": 0,
+      "loss_total_first_20pct_mean": 0.731771674785847,
+      "loss_total_final_20pct_mean": 0.21346679401576968,
+      "loss_total_final_20pct_first_half_mean": 0.21514237971234143,
+      "loss_total_final_20pct_second_half_mean": 0.21179120831919793,
+      "decreasing_in_tail": true,
+      "grad_norm_mean": 3.082333167876516,
+      "wall_clock_training_s": 5816.3
+    },
+    "status": "PASS",
+    "interpretation": "Full run over all 533 real train-split cases (kits+pancreas+liver), 50 epochs, 13300 steps, ~97 minutes of training on t4-medium. 0 NaN/Inf steps across the entire run. Loss fell from a first-20%-of-steps mean of 0.732 to a final-20% mean of 0.213 -- a >3x reduction -- and was still decreasing within that final window (0.215 -> 0.212), not plateaued-then-diverging. Gradient norm settled to a small, stable range (mean 3.08, well below the 1.0 clip threshold's multiples seen early in the smoke run), consistent with a model that has genuinely converged rather than one still being held stable only by clipping. Interrupted once at epoch 23/step 6165 by a transient local network drop in the log-streaming client (httpx.ConnectError, DNS resolution failure) -- confirmed via `hf jobs inspect` that the remote job itself was unaffected (still RUNNING), re-attached via `hf jobs logs -f` with no data lost, since the job runs independently of the local log stream and checkpoints every epoch regardless.",
+    "reproduce": "Same job script, Env: SMOKE=0. Output: processed/dirac/gate3_full_results.json (report + full per-step history) and processed/dirac/checkpoints/pretrain_full_seed0.pt in hf://buckets/Chucks90/jobs-artifacts."
+  }
+}

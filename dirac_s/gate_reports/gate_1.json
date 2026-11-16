@@ -1,0 +1,40 @@
+{
+  "project": "dirac",
+  "gate": 1,
+  "phase": "Phase 1 - Dataset select+freeze, preprocessing",
+  "objective": "Is the dataset trio usable and leak-free?",
+  "job_id": null,
+  "job_ids": {
+    "kits23_pilot": "6a7fdf3fc97db76cbdf31d67",
+    "msd_pancreas_pilot": "6a7fe1d0c97db76cbdf31d85",
+    "msd_liver_pilot": "6a7fe1e31f5885ae605ba1ca",
+    "kits23_full": "6a80193cc97db76cbdf31f98",
+    "msd_pancreas_full": "6a801950c97db76cbdf31f9a",
+    "msd_liver_full": "6a801962c97db76cbdf31f9e"
+  },
+  "checks": {
+    "qc_pass_rate": {"value": 1.0, "threshold": 0.90, "threshold_status": "CALIBRATE->locked", "passed": true},
+    "split_leakage": {"value": 0, "threshold": 0, "threshold_status": "FIXED", "passed": true, "leaking_case_ids": []},
+    "n_cases_total": 801,
+    "n_cases_qc_passed": 801,
+    "split_counts": {"train": 533, "val": 145, "test": 123},
+    "per_dataset": {
+      "kits23": {"attempted": 489, "materialized": 389, "errors": 100, "error_type": "RemoteEntryNotFoundError (404)"},
+      "pancreas": {"attempted": 281, "materialized": 281, "errors": 0},
+      "liver": {"attempted": 131, "materialized": 131, "errors": 0}
+    },
+    "manifest_row_count_matches_bucket_done_sentinels": {"kits23": true, "pancreas": true, "liver": true, "passed": true},
+    "volume_shape_spot_check": {"expected_bytes": 8388736, "note": "128^3 float32; verified at multiple cases across all three datasets including the tail end of each run, not just early cases", "passed": true}
+  },
+  "status": "PASS",
+  "fallback_path": null,
+  "seeds": [0],
+  "data_gaps": [
+    "kits23: 100 of 489 attempted case IDs (case_00300 onward, contiguous block) returned RemoteEntryNotFoundError (404) from the source HF repo neheller/KiTS-Challenge-Imaging — these case numbers simply do not exist in the public mirror. Not a pipeline bug (every other case in the same run succeeded; all 100 errors are the identical 404 type, none are processing/QC failures). 389 real cases materialized instead of 489. This changes the honest denominator for any KiTS23-specific reporting going forward: 389, not 489."
+  ],
+  "decision_rule": "PASS iff leakage=0 AND QC pass rate >= threshold (IMPLEMENTATION_SPEC.md Section 1, Gate 1 row)",
+  "interpretation": "801 real cases materialized across the frozen trio (KiTS23 389 + MSD Pancreas 281 + MSD Liver 131), 100% QC pass rate (well above the 90% threshold), zero split leakage (verified via an independent leakage check over the aggregated manifest, not just trusting split_of()'s determinism). Every .done sentinel count in the bucket matches its manifest's row count exactly for all three datasets, and volume.npy byte sizes were spot-checked at 128^3 float32 (8,388,736 bytes) across multiple cases per dataset including the last-processed case in each run, not just the first. The KiTS23 shortfall (389 vs. the attempted 489) is a genuine data-availability gap in the source repo, not a defect in this pipeline — reported here rather than silently absorbed, since 'attempted 489' would otherwise misrepresent what's actually available for Phase 3 pretraining. Two real infrastructure bugs were found and fixed during this phase's pilot runs (both before the full-scale runs, per the pilot-first strategy): (1) hf jobs uv run only uploads a single script file, so the job scripts' initial assumption that they could import from the local dirac/data/ package failed with ModuleNotFoundError on the very first real HF Jobs run — fixed by inlining the needed logic, matching the self-contained-script convention already used by every other job in this vault (verified via grep: zero sibling jobs do local cross-file imports); (2) Path.replace() cannot move a file across filesystems (EXDEV) between the job container's local /tmp and the mounted bucket at /mnt — fixed with shutil.move(), which falls back to copy+delete automatically. Both fixes were verified against real data (a real KiTS23 case, both before and after each fix) before being trusted, not just assumed correct from reading the diff. A separate check (prompted by a direct question about whether this data was already cached in the vault's large eryon-datasets bucket) confirmed it was not reusable: covtoken had already run ingestion against all three datasets there, but its own code deletes every raw NIfTI file and the source tar immediately after converting to its own lossy 2D PNG derivative, so only that already-transformed output survives, not the raw 3D volumes this pipeline actually needs.",
+  "next": "Phase 2: unit tests for rho/G/T on real (not synthetic) preprocessed volumes, before Phase 3 pretraining",
+  "reproduce": "Med_Architecture_Research/dirac/jobs/materialize_kits_job.py and materialize_msd_job.py (HF Jobs, cpu-upgrade). Bucket: hf://buckets/Chucks90/jobs-artifacts, path processed/dirac/. Manifest aggregation: data/manifest.py load_manifest + freeze_manifest. Lock file: dirac/configs/dataset_manifest.lock.json.",
+  "human_signoff": "GO"
+}

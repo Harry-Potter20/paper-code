@@ -1,0 +1,32 @@
+{
+  "d": 64,
+  "K": 8,
+  "grid_shape": [
+    4,
+    4,
+    4
+  ],
+  "n_tokens": 64,
+  "synthetic_volume_size": 64,
+  "real_target_volume_size": 128,
+  "tolerance_pct": 5.0,
+  "n_dirac_s": 1552520,
+  "n_cnn_baseline": 1546240,
+  "n_vit_baseline": 1487144,
+  "cnn_width": 36,
+  "vit_width": 136,
+  "delta_cnn_pct": 0.405,
+  "delta_vit_pct": 4.211,
+  "dirac_ledger": {
+    "conv": 1162080,
+    "norm": 736,
+    "mlp": 81920,
+    "attention": 33152,
+    "complex_projections": 74752,
+    "graph_layers": 8192,
+    "topology_embeddings": 4672,
+    "decoders_adapters": 182528,
+    "biases": 4488,
+    "total": 1552520
+  }
+}
