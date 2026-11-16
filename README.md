@@ -5,7 +5,7 @@ Code, pre-registrations and result files for papers by Chukwudi Eke.
 | folder | paper | status |
 |---|---|---|
 | `dirac_s/` | *Structure or supervision? A parameter-matched, ablation-disentangled test of a structured-latent 3D CT encoder* | in submission |
-| `green_means_go/` | *Green means go: an ECG foundation model calls normal athletes abnormal, and a readout retrained on the athlete criteria removes two-thirds of the false alarms* | in submission |
+| `green_means_go/` | *Green means go: an ECG foundation model over-calls normal athletes, and athlete-criteria labels correct it* | in submission |
 
 Each folder holds the job scripts as they were run, the pre-registrations and gate reports (with job identifiers), and
 aggregate result files. No model weights, restricted data, raw signals or images are included; `green_means_go/results/`
