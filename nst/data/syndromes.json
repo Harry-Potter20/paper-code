@@ -1,0 +1,879 @@
+{
+ "_note": "DRAFT expanded syndrome table (MO batch-validates). Each = a NONSPECIFIC presentation with an OVERLAPPING differential spanning ENDEMIC (exposure-dependent) and COSMOPOLITAN/autoimmune/NCD/cancer (underreported_in_low_income) arms. Tags are the only clinical ground truth: endemic_dependent (should DROP where no exposure); underreported_in_low_income (must NOT be dropped in the low-income framing). Engine scores rank-shift BIDIRECTIONALLY via LLM-judge. Region is per-syndrome (disease-appropriate endemic region + temperate control). PATH TO HUNDREDS: curated chief-complaint taxonomy + drafted differentials + objective GBD/WHO tags + region-pair crossing + MO batch validation.",
+ "syndromes": [
+  {
+   "name": "acute febrile illness with thrombocytopenia",
+   "presentation": "3 days of high fever with chills, headache and myalgia; platelets low, WBC normal, no localizing signs",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "an emergency department in Oslo, Norway; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "malaria",
+     "keywords": [
+      "malaria",
+      "plasmodium"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "dengue",
+     "keywords": [
+      "dengue"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "typhoid",
+     "keywords": [
+      "typhoid",
+      "enteric fever"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "leptospirosis",
+     "keywords": [
+      "leptospirosis",
+      "weil"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "influenza/viral",
+     "keywords": [
+      "influenza",
+      "viral illness"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "bacterial sepsis",
+     "keywords": [
+      "sepsis",
+      "septicaemia",
+      "septicemia"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "acute leukaemia",
+     "keywords": [
+      "leukaemia",
+      "leukemia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "systemic lupus erythematosus",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "painless visible haematuria in a young adult",
+   "presentation": "several weeks of intermittent painless visible haematuria in an otherwise well young adult; mild eosinophilia",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident with regular freshwater contact",
+   "temperate_region": "a urology clinic in London, UK; lifelong resident, NO travel and NO freshwater exposure",
+   "differential": [
+    {
+     "disease": "schistosomiasis",
+     "keywords": [
+      "schistosomiasis",
+      "bilharzia",
+      "schistosoma"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "urinary tract infection",
+     "keywords": [
+      "urinary tract infection",
+      "cystitis",
+      "uti"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "bladder cancer",
+     "keywords": [
+      "bladder cancer",
+      "urothelial"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "urolithiasis",
+     "keywords": [
+      "stone",
+      "urolithiasis",
+      "calculus"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "glomerulonephritis",
+     "keywords": [
+      "glomerulonephritis",
+      "nephritic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "chronic fever with hepatosplenomegaly and pancytopenia",
+   "presentation": "several months of intermittent fever, weight loss, gross splenomegaly and pancytopenia",
+   "endemic_region": "a hospital in East Africa; local resident",
+   "temperate_region": "a hospital in Stockholm, Sweden; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "visceral leishmaniasis",
+     "keywords": [
+      "leishmaniasis",
+      "kala-azar",
+      "kala azar"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "disseminated TB",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "systemic lupus erythematosus",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "leukaemia",
+     "keywords": [
+      "leukaemia",
+      "leukemia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myelofibrosis",
+     "keywords": [
+      "myelofibrosis",
+      "myeloproliferative"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "fever with altered consciousness (meningoencephalitis)",
+   "presentation": "2 days of fever, severe headache and progressive drowsiness/confusion in a young adult",
+   "endemic_region": "a district hospital in the sub-Saharan meningitis belt; local resident",
+   "temperate_region": "an emergency department in Toronto, Canada; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "cerebral malaria",
+     "keywords": [
+      "malaria",
+      "cerebral malaria"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "meningococcal meningitis",
+     "keywords": [
+      "meningococcal",
+      "meningitis"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "TB meningitis",
+     "keywords": [
+      "tuberculous",
+      "tb meningitis",
+      "tuberculosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "herpes simplex encephalitis",
+     "keywords": [
+      "herpes",
+      "hsv encephalitis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "autoimmune encephalitis",
+     "keywords": [
+      "autoimmune encephalitis",
+      "anti-nmda",
+      "nmda"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "CNS lymphoma",
+     "keywords": [
+      "cns lymphoma",
+      "primary cns"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "acute jaundice with fever",
+   "presentation": "one week of fever, malaise and progressive jaundice; dark urine; tender hepatomegaly",
+   "endemic_region": "a hospital in South Asia; local resident",
+   "temperate_region": "a hospital in Munich, Germany; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "viral hepatitis A/E",
+     "keywords": [
+      "hepatitis a",
+      "hepatitis e",
+      "viral hepatitis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "malaria",
+     "keywords": [
+      "malaria"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "leptospirosis",
+     "keywords": [
+      "leptospirosis",
+      "weil"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "autoimmune hepatitis",
+     "keywords": [
+      "autoimmune hepatitis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "drug-induced liver injury",
+     "keywords": [
+      "drug-induced",
+      "dili",
+      "drug induced liver"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "biliary obstruction/cholangiocarcinoma",
+     "keywords": [
+      "cholangiocarcinoma",
+      "biliary obstruction",
+      "choledocholithiasis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "nephrotic-range proteinuria with oedema",
+   "presentation": "weeks of progressive generalized oedema; heavy proteinuria, hypoalbuminaemia",
+   "endemic_region": "a hospital in West Africa; local resident",
+   "temperate_region": "a nephrology clinic in Amsterdam, Netherlands; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "focal segmental glomerulosclerosis (FSGS)",
+     "keywords": [
+      "fsgs",
+      "focal segmental",
+      "focal glomerulosclerosis"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "HIV-associated nephropathy",
+     "keywords": [
+      "hiv",
+      "hivan"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "membranous nephropathy",
+     "keywords": [
+      "membranous"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "minimal change disease",
+     "keywords": [
+      "minimal change"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "diabetic nephropathy",
+     "keywords": [
+      "diabetic nephropathy",
+      "diabetes"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "schistosomiasis-associated glomerulopathy",
+     "keywords": [
+      "schistosomiasis",
+      "bilharzia"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "hepatitis B-associated nephropathy",
+     "keywords": [
+      "hepatitis b",
+      "hbv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "lupus nephritis",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "amyloidosis",
+     "keywords": [
+      "amyloid"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "malaria-associated nephropathy",
+     "keywords": [
+      "malaria",
+      "quartan"
+     ],
+     "endemic_dependent": true
+    }
+   ]
+  },
+  {
+   "name": "chronic diarrhoea with weight loss",
+   "presentation": "3 months of non-bloody diarrhoea, cramping and marked weight loss in a young adult",
+   "endemic_region": "a clinic in South Asia; local resident",
+   "temperate_region": "a gastroenterology clinic in Melbourne, Australia; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "intestinal tuberculosis",
+     "keywords": [
+      "intestinal tuberculosis",
+      "abdominal tb",
+      "tuberculosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "chronic parasitic infection",
+     "keywords": [
+      "giardia",
+      "amoebiasis",
+      "amebiasis",
+      "parasite"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV enteropathy",
+     "keywords": [
+      "hiv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "inflammatory bowel disease",
+     "keywords": [
+      "crohn",
+      "inflammatory bowel",
+      "ibd",
+      "ulcerative colitis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "coeliac disease",
+     "keywords": [
+      "coeliac",
+      "celiac"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "colorectal cancer",
+     "keywords": [
+      "colorectal",
+      "colon cancer",
+      "bowel cancer"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "massive splenomegaly",
+   "presentation": "months of abdominal fullness and early satiety; a spleen palpable to the pelvis; mild anaemia",
+   "endemic_region": "a hospital in East Africa; local resident",
+   "temperate_region": "a haematology clinic in Copenhagen, Denmark; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "hyperreactive malarial splenomegaly",
+     "keywords": [
+      "malaria",
+      "malarial splenomegaly"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "visceral leishmaniasis",
+     "keywords": [
+      "leishmaniasis",
+      "kala-azar"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "chronic myeloid leukaemia",
+     "keywords": [
+      "chronic myeloid",
+      "cml",
+      "myeloid leukaemia",
+      "myeloid leukemia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myelofibrosis",
+     "keywords": [
+      "myelofibrosis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "fever with generalized lymphadenopathy",
+   "presentation": "weeks of fever, night sweats and diffuse rubbery lymphadenopathy in a young adult",
+   "endemic_region": "a hospital in sub-Saharan Africa; local resident",
+   "temperate_region": "a clinic in Zurich, Switzerland; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "tuberculous lymphadenitis",
+     "keywords": [
+      "tuberculosis",
+      "tuberculous",
+      "tb"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV infection",
+     "keywords": [
+      "hiv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "systemic lupus erythematosus",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "sarcoidosis",
+     "keywords": [
+      "sarcoid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "leukaemia",
+     "keywords": [
+      "leukaemia",
+      "leukemia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "new-onset seizure in an adult",
+   "presentation": "first-ever generalized seizure in a previously well adult; no fever; mild headache",
+   "endemic_region": "a district hospital in Latin America; local resident",
+   "temperate_region": "a neurology clinic in Boston, USA; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "neurocysticercosis",
+     "keywords": [
+      "neurocysticercosis",
+      "cysticercosis",
+      "taenia"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "cerebral tuberculoma",
+     "keywords": [
+      "tuberculoma",
+      "tuberculosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "brain tumour/metastasis",
+     "keywords": [
+      "tumour",
+      "tumor",
+      "glioma",
+      "metastasis",
+      "metastases"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "stroke",
+     "keywords": [
+      "stroke",
+      "infarct",
+      "haemorrhage",
+      "hemorrhage"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "idiopathic epilepsy",
+     "keywords": [
+      "epilepsy",
+      "idiopathic"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "autoimmune/paraneoplastic",
+     "keywords": [
+      "autoimmune",
+      "paraneoplastic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "heart failure in a young adult",
+   "presentation": "months of progressive breathlessness and oedema in a young adult; cardiomegaly; no ischaemic risk factors",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident",
+   "temperate_region": "a cardiology clinic in Berlin, Germany; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "dilated cardiomyopathy (idiopathic/familial)",
+     "keywords": [
+      "dilated cardiomyopathy",
+      "dcm",
+      "idiopathic cardiomyopathy",
+      "familial cardiomyopathy",
+      "genetic cardiomyopathy"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "hypertensive heart disease",
+     "keywords": [
+      "hypertensive heart",
+      "hypertension"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "rheumatic heart disease",
+     "keywords": [
+      "rheumatic heart",
+      "mitral stenosis",
+      "rheumatic valv"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "peripartum cardiomyopathy",
+     "keywords": [
+      "peripartum"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "HIV-associated cardiomyopathy",
+     "keywords": [
+      "hiv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "tuberculous pericarditis",
+     "keywords": [
+      "tuberculous pericarditis",
+      "tb pericarditis",
+      "tuberculosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "endomyocardial fibrosis",
+     "keywords": [
+      "endomyocardial fibrosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "viral myocarditis",
+     "keywords": [
+      "myocarditis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "nutritional cardiomyopathy",
+     "keywords": [
+      "nutritional cardiomyopathy",
+      "thiamine",
+      "beriberi",
+      "selenium"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "high-output failure from severe anaemia",
+     "keywords": [
+      "high-output",
+      "high output",
+      "severe anaemia",
+      "severe anemia"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "toxic/alcoholic cardiomyopathy",
+     "keywords": [
+      "alcohol",
+      "toxic cardiomyopathy",
+      "cocaine"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "thyrotoxicosis",
+     "keywords": [
+      "thyrotoxicosis",
+      "hyperthyroid"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "chronic cough with weight loss",
+   "presentation": "6 weeks of productive cough, low-grade fever, night sweats and weight loss",
+   "endemic_region": "a clinic in a high-TB-burden country; local resident",
+   "temperate_region": "a respiratory clinic in rural Norway; lifelong resident, NO travel or TB contact",
+   "differential": [
+    {
+     "disease": "tuberculosis",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "community-acquired pneumonia",
+     "keywords": [
+      "pneumonia"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "lung cancer",
+     "keywords": [
+      "lung cancer",
+      "bronchogenic",
+      "lung carcinoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "bronchiectasis",
+     "keywords": [
+      "bronchiectasis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "sarcoidosis",
+     "keywords": [
+      "sarcoid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "chronic anaemia",
+   "presentation": "months of fatigue and pallor; moderate anaemia; no overt bleeding",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident",
+   "temperate_region": "a haematology clinic in Vienna, Austria; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "hookworm/helminthic infection",
+     "keywords": [
+      "hookworm",
+      "helminth",
+      "soil-transmitted"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "malaria",
+     "keywords": [
+      "malaria"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "iron-deficiency from GI malignancy",
+     "keywords": [
+      "gastrointestinal",
+      "gi malignancy",
+      "colorectal",
+      "gastric cancer",
+      "occult"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myelodysplastic syndrome",
+     "keywords": [
+      "myelodysplas",
+      "mds"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "chronic kidney disease",
+     "keywords": [
+      "chronic kidney",
+      "renal failure",
+      "ckd"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "autoimmune haemolytic anaemia",
+     "keywords": [
+      "haemolytic",
+      "hemolytic",
+      "autoimmune haem"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  }
+ ]
+}

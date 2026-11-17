@@ -1,0 +1,68 @@
+{
+  "_note": "DRAFT disease table (textbook-level public epidemiology) for the METAMORPHIC engine. MO validates presentations/confusers/urgency. This is a TABLE of public facts, NOT hand-authored clinical vignettes — the engine auto-generates matched endemic/temperate framings and scores geography-sensitivity RELATIONALLY (no per-case ground truth needed).",
+  "diseases": [
+    {
+      "name": "malaria",
+      "keywords": ["malaria", "plasmodium"],
+      "presentation": "3 days of high fever with chills, headache and myalgia; mild confusion this evening; platelets low, WBC normal",
+      "endemic_region": "a district hospital in sub-Saharan Africa; patient is a local resident with no travel abroad",
+      "temperate_region": "an emergency department in Oslo, Norway; patient is a lifelong resident with NO travel history and NO relevant exposures",
+      "temperate_confusers": ["influenza", "viral illness", "viral meningitis"],
+      "urgent": true
+    },
+    {
+      "name": "typhoid",
+      "keywords": ["typhoid", "enteric fever", "salmonella typhi"],
+      "presentation": "prolonged (>1 week) stepwise fever, abdominal discomfort, headache, relative bradycardia; mild hepatosplenomegaly",
+      "endemic_region": "a clinic in South Asia; patient is a local resident with no travel abroad",
+      "temperate_region": "a clinic in Toronto, Canada; patient is a lifelong resident with NO travel and NO exposures",
+      "temperate_confusers": ["viral gastroenteritis", "influenza", "nonspecific viral"],
+      "urgent": true
+    },
+    {
+      "name": "dengue",
+      "keywords": ["dengue"],
+      "presentation": "sudden high fever, severe retro-orbital pain, myalgia and arthralgia, rash; falling platelets",
+      "endemic_region": "a hospital in Southeast Asia during rainy season; local resident, no travel abroad",
+      "temperate_region": "a hospital in Berlin, Germany; lifelong resident, NO travel and NO exposures",
+      "temperate_confusers": ["influenza", "viral exanthem", "nonspecific viral"],
+      "urgent": true
+    },
+    {
+      "name": "tuberculosis",
+      "keywords": ["tuberculosis", "tb", "mycobacterium"],
+      "presentation": "several weeks of cough, weight loss, night sweats and low-grade fever; occasional blood-streaked sputum",
+      "endemic_region": "a clinic in a high-TB-burden country; local resident",
+      "temperate_region": "a clinic in rural Norway; lifelong resident, no known TB contact, no travel",
+      "temperate_confusers": ["community-acquired pneumonia", "bronchitis", "lung cancer"],
+      "urgent": false
+    },
+    {
+      "name": "schistosomiasis",
+      "keywords": ["schistosomiasis", "bilharzia", "schistosoma"],
+      "presentation": "painless visible haematuria in a young adult; mild eosinophilia; frequent freshwater contact",
+      "endemic_region": "a district hospital in sub-Saharan Africa; local resident with freshwater exposure",
+      "temperate_region": "a urology clinic in London, UK; lifelong resident, NO freshwater/tropical exposure or travel",
+      "temperate_confusers": ["urinary tract infection", "bladder cancer", "kidney stone"],
+      "urgent": false
+    },
+    {
+      "name": "visceral leishmaniasis",
+      "keywords": ["leishmaniasis", "kala-azar", "kala azar"],
+      "presentation": "months of intermittent fever, marked weight loss, gross splenomegaly and pancytopenia",
+      "endemic_region": "a hospital in East Africa; local resident",
+      "temperate_region": "a hospital in Stockholm, Sweden; lifelong resident, NO travel or exposures",
+      "temperate_confusers": ["lymphoma", "leukemia", "myelofibrosis"],
+      "urgent": true
+    },
+    {
+      "name": "leptospirosis",
+      "keywords": ["leptospirosis", "weil"],
+      "presentation": "acute fever, severe calf myalgia, conjunctival suffusion, jaundice and rising creatinine; recent floodwater exposure",
+      "endemic_region": "a hospital in a tropical region after flooding; local resident with floodwater contact",
+      "temperate_region": "a hospital in Munich, Germany; lifelong resident, NO travel or water exposures",
+      "temperate_confusers": ["viral hepatitis", "influenza", "nonspecific viral"],
+      "urgent": true
+    }
+  ]
+}

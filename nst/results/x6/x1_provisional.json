@@ -1,0 +1,342 @@
+{
+ "Qwen__Qwen2.5-7B-Instruct": {
+  "all50": {
+   "underreported_incl": {
+    "n": 49,
+    "cells": {
+     "low_income__well_resourced": 0.291,
+     "low_income__constrained": 0.179,
+     "high_income__well_resourced": 0.252,
+     "high_income__constrained": 0.247
+    },
+    "geography_HIC_minus_LIC": [
+     0.014,
+     -0.037,
+     0.064
+    ],
+    "resource_WR_minus_C": [
+     0.059,
+     0.01,
+     0.106
+    ],
+    "interaction": [
+     -0.107,
+     -0.197,
+     -0.015
+    ]
+   },
+   "endemic_incl": {
+    "n": 46,
+    "cells": {
+     "low_income__well_resourced": 0.207,
+     "low_income__constrained": 0.275,
+     "high_income__well_resourced": 0.04,
+     "high_income__constrained": 0.107
+    },
+    "geography_HIC_minus_LIC": [
+     -0.168,
+     -0.248,
+     -0.096
+    ],
+    "resource_WR_minus_C": [
+     -0.068,
+     -0.118,
+     -0.024
+    ],
+    "interaction": [
+     0.002,
+     -0.103,
+     0.105
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 4.52,
+    "low_income__constrained": 4.06,
+    "high_income__well_resourced": 4.1,
+    "high_income__constrained": 4.0
+   }
+  },
+  "orig26": {
+   "underreported_incl": {
+    "n": 25,
+    "cells": {
+     "low_income__well_resourced": 0.263,
+     "low_income__constrained": 0.12,
+     "high_income__well_resourced": 0.253,
+     "high_income__constrained": 0.21
+    },
+    "geography_HIC_minus_LIC": [
+     0.04,
+     -0.028,
+     0.113
+    ],
+    "resource_WR_minus_C": [
+     0.093,
+     0.047,
+     0.143
+    ],
+    "interaction": [
+     -0.1,
+     -0.227,
+     0.037
+    ]
+   },
+   "endemic_incl": {
+    "n": 26,
+    "cells": {
+     "low_income__well_resourced": 0.327,
+     "low_income__constrained": 0.372,
+     "high_income__well_resourced": 0.071,
+     "high_income__constrained": 0.151
+    },
+    "geography_HIC_minus_LIC": [
+     -0.239,
+     -0.361,
+     -0.131
+    ],
+    "resource_WR_minus_C": [
+     -0.062,
+     -0.131,
+     -0.002
+    ],
+    "interaction": [
+     -0.035,
+     -0.176,
+     0.103
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 4.73,
+    "low_income__constrained": 4.19,
+    "high_income__well_resourced": 4.19,
+    "high_income__constrained": 4.0
+   }
+  },
+  "x6_24": {
+   "underreported_incl": {
+    "n": 24,
+    "cells": {
+     "low_income__well_resourced": 0.319,
+     "low_income__constrained": 0.24,
+     "high_income__well_resourced": 0.25,
+     "high_income__constrained": 0.285
+    },
+    "geography_HIC_minus_LIC": [
+     -0.012,
+     -0.083,
+     0.056
+    ],
+    "resource_WR_minus_C": [
+     0.023,
+     -0.069,
+     0.102
+    ],
+    "interaction": [
+     -0.115,
+     -0.25,
+     0.021
+    ]
+   },
+   "endemic_incl": {
+    "n": 20,
+    "cells": {
+     "low_income__well_resourced": 0.05,
+     "low_income__constrained": 0.15,
+     "high_income__well_resourced": 0.0,
+     "high_income__constrained": 0.05
+    },
+    "geography_HIC_minus_LIC": [
+     -0.075,
+     -0.15,
+     -0.013
+    ],
+    "resource_WR_minus_C": [
+     -0.075,
+     -0.15,
+     -0.013
+    ],
+    "interaction": [
+     0.05,
+     -0.1,
+     0.2
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 4.29,
+    "low_income__constrained": 3.92,
+    "high_income__well_resourced": 4.0,
+    "high_income__constrained": 4.0
+   }
+  }
+ },
+ "m42-health__Llama3-Med42-8B": {
+  "all50": {
+   "underreported_incl": {
+    "n": 49,
+    "cells": {
+     "low_income__well_resourced": 0.362,
+     "low_income__constrained": 0.187,
+     "high_income__well_resourced": 0.328,
+     "high_income__constrained": 0.303
+    },
+    "geography_HIC_minus_LIC": [
+     0.041,
+     -0.012,
+     0.095
+    ],
+    "resource_WR_minus_C": [
+     0.1,
+     0.047,
+     0.154
+    ],
+    "interaction": [
+     -0.15,
+     -0.235,
+     -0.068
+    ]
+   },
+   "endemic_incl": {
+    "n": 46,
+    "cells": {
+     "low_income__well_resourced": 0.223,
+     "low_income__constrained": 0.366,
+     "high_income__well_resourced": 0.074,
+     "high_income__constrained": 0.105
+    },
+    "geography_HIC_minus_LIC": [
+     -0.205,
+     -0.293,
+     -0.125
+    ],
+    "resource_WR_minus_C": [
+     -0.087,
+     -0.152,
+     -0.027
+    ],
+    "interaction": [
+     0.112,
+     -0.022,
+     0.239
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 5.6,
+    "low_income__constrained": 4.92,
+    "high_income__well_resourced": 5.0,
+    "high_income__constrained": 4.88
+   }
+  },
+  "orig26": {
+   "underreported_incl": {
+    "n": 25,
+    "cells": {
+     "low_income__well_resourced": 0.263,
+     "low_income__constrained": 0.073,
+     "high_income__well_resourced": 0.31,
+     "high_income__constrained": 0.243
+    },
+    "geography_HIC_minus_LIC": [
+     0.108,
+     0.042,
+     0.18
+    ],
+    "resource_WR_minus_C": [
+     0.128,
+     0.073,
+     0.19
+    ],
+    "interaction": [
+     -0.123,
+     -0.243,
+     -0.01
+    ]
+   },
+   "endemic_incl": {
+    "n": 26,
+    "cells": {
+     "low_income__well_resourced": 0.337,
+     "low_income__constrained": 0.455,
+     "high_income__well_resourced": 0.112,
+     "high_income__constrained": 0.186
+    },
+    "geography_HIC_minus_LIC": [
+     -0.247,
+     -0.369,
+     -0.135
+    ],
+    "resource_WR_minus_C": [
+     -0.096,
+     -0.192,
+     -0.006
+    ],
+    "interaction": [
+     0.045,
+     -0.154,
+     0.244
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 6.12,
+    "low_income__constrained": 5.19,
+    "high_income__well_resourced": 5.08,
+    "high_income__constrained": 5.08
+   }
+  },
+  "x6_24": {
+   "underreported_incl": {
+    "n": 24,
+    "cells": {
+     "low_income__well_resourced": 0.465,
+     "low_income__constrained": 0.306,
+     "high_income__well_resourced": 0.347,
+     "high_income__constrained": 0.365
+    },
+    "geography_HIC_minus_LIC": [
+     -0.03,
+     -0.106,
+     0.043
+    ],
+    "resource_WR_minus_C": [
+     0.071,
+     -0.028,
+     0.153
+    ],
+    "interaction": [
+     -0.177,
+     -0.306,
+     -0.056
+    ]
+   },
+   "endemic_incl": {
+    "n": 20,
+    "cells": {
+     "low_income__well_resourced": 0.075,
+     "low_income__constrained": 0.25,
+     "high_income__well_resourced": 0.025,
+     "high_income__constrained": 0.0
+    },
+    "geography_HIC_minus_LIC": [
+     -0.15,
+     -0.275,
+     -0.05
+    ],
+    "resource_WR_minus_C": [
+     -0.075,
+     -0.163,
+     0.0
+    ],
+    "interaction": [
+     0.2,
+     0.05,
+     0.375
+    ]
+   },
+   "mean_len": {
+    "low_income__well_resourced": 5.04,
+    "low_income__constrained": 4.62,
+    "high_income__well_resourced": 4.92,
+    "high_income__constrained": 4.67
+   }
+  }
+ }
+}

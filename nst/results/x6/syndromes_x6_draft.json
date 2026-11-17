@@ -1,0 +1,1432 @@
+{
+ "status": "DRAFT 2026-11-10 \u2014 clinician validation REQUIRED before use (owner + >=1 independent clinician). X6 confirmatory set: authored after the original 26 findings; no Paperclip.",
+ "taxonomy": "endemic_dependent / low_income_enriched (excluded from bias) / underreported_in_low_income (under-call targets) / cosmopolitan_stable (no flag)",
+ "syndromes": [
+  {
+   "name": "progressive dysphagia with weight loss",
+   "presentation": "4 months of progressive dysphagia to solids then liquids, regurgitation, 8 kg weight loss",
+   "endemic_region": "a rural hospital in Bolivia; local resident, no travel abroad",
+   "temperate_region": "a gastroenterology clinic in Lyon, France; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "Chagas megaoesophagus",
+     "keywords": [
+      "chagas",
+      "trypanosoma cruzi",
+      "megaoesophagus",
+      "megaesophagus"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "oesophageal squamous cell carcinoma",
+     "keywords": [
+      "squamous",
+      "oesophageal cancer",
+      "esophageal cancer"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "idiopathic achalasia",
+     "keywords": [
+      "achalasia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "oesophageal adenocarcinoma",
+     "keywords": [
+      "adenocarcinoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "peptic stricture",
+     "keywords": [
+      "stricture"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "eosinophilic oesophagitis",
+     "keywords": [
+      "eosinophilic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "right iliac fossa mass with intermittent obstruction",
+   "presentation": "3 months of colicky abdominal pain, intermittent vomiting, a tender right iliac fossa mass, low-grade fever",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "a surgical clinic in Leeds, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "ileocaecal tuberculosis",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "amoeboma",
+     "keywords": [
+      "amoeboma",
+      "amoebic"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "ascaris bolus obstruction",
+     "keywords": [
+      "ascaris",
+      "worm"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "Crohn's disease",
+     "keywords": [
+      "crohn"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "caecal adenocarcinoma",
+     "keywords": [
+      "colon cancer",
+      "colorectal",
+      "caecal cancer",
+      "adenocarcinoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "intestinal lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "appendiceal mass",
+     "keywords": [
+      "appendic"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "hypertension with hypokalaemia in a young adult",
+   "presentation": "29-year-old with blood pressure 178/110 on three readings, potassium 2.9 mmol/L, no family history",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "a hypertension clinic in Copenhagen, Denmark; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "primary hyperaldosteronism",
+     "keywords": [
+      "aldosteron",
+      "conn"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "renovascular hypertension / fibromuscular dysplasia",
+     "keywords": [
+      "renal artery",
+      "renovascular",
+      "fibromuscular"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "Cushing syndrome",
+     "keywords": [
+      "cushing"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "phaeochromocytoma",
+     "keywords": [
+      "phaeochromocytoma",
+      "pheochromocytoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "chronic kidney disease",
+     "keywords": [
+      "chronic kidney",
+      "ckd"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "essential hypertension with diuretic use",
+     "keywords": [
+      "essential",
+      "diuretic"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "hypopigmented skin patches with sensory loss",
+   "presentation": "6 months of several hypopigmented, dry patches on trunk and arms; reduced light-touch sensation over the patches",
+   "endemic_region": "a district hospital in rural India; local resident, no travel abroad",
+   "temperate_region": "a dermatology clinic in Stockholm, Sweden; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "leprosy",
+     "keywords": [
+      "leprosy",
+      "hansen"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "post-kala-azar dermal leishmaniasis",
+     "keywords": [
+      "kala-azar",
+      "leishmaniasis",
+      "pkdl"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "pityriasis versicolor",
+     "keywords": [
+      "versicolor"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "mycosis fungoides (cutaneous T-cell lymphoma)",
+     "keywords": [
+      "mycosis fungoides",
+      "cutaneous t-cell",
+      "ctcl"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "sarcoidosis",
+     "keywords": [
+      "sarcoid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "vitiligo",
+     "keywords": [
+      "vitiligo"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "back pain with fever",
+   "presentation": "6 weeks of thoracolumbar back pain worse at night, evening fevers, sweats, local spinal tenderness",
+   "endemic_region": "a district hospital in rural Sudan; local resident who keeps goats, no travel abroad",
+   "temperate_region": "a spine clinic in Munich, Germany; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "spinal tuberculosis (Pott disease)",
+     "keywords": [
+      "pott",
+      "spinal tuberculosis",
+      "tuberculous spondylitis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "brucellar spondylitis",
+     "keywords": [
+      "brucell"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "multiple myeloma",
+     "keywords": [
+      "myeloma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "metastatic cancer to spine",
+     "keywords": [
+      "metasta"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "pyogenic vertebral osteomyelitis",
+     "keywords": [
+      "pyogenic",
+      "osteomyelitis",
+      "discitis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "breast lump in a 40-year-old woman",
+   "presentation": "a 3 cm firm, painless breast lump noticed 2 months ago, no nipple discharge, one palpable axillary node",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "a breast clinic in Manchester, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "breast cancer",
+     "keywords": [
+      "breast cancer",
+      "carcinoma",
+      "malignan"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "fibroadenoma",
+     "keywords": [
+      "fibroadenoma"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "tuberculous mastitis",
+     "keywords": [
+      "tuberculous mastitis",
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "idiopathic granulomatous mastitis",
+     "keywords": [
+      "granulomatous mastitis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "phyllodes tumour",
+     "keywords": [
+      "phyllodes"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "filarial breast lesion",
+     "keywords": [
+      "filari"
+     ],
+     "endemic_dependent": true
+    }
+   ]
+  },
+  {
+   "name": "postmenopausal vaginal bleeding",
+   "presentation": "58-year-old woman with 6 weeks of intermittent vaginal bleeding, 5 years after menopause",
+   "endemic_region": "a district hospital in Malawi; local resident, no travel abroad",
+   "temperate_region": "a gynaecology clinic in Rotterdam, Netherlands; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "cervical cancer",
+     "keywords": [
+      "cervical cancer",
+      "cervix"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "endometrial cancer",
+     "keywords": [
+      "endometrial cancer",
+      "endometrial carcinoma",
+      "uterine cancer"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "endometrial hyperplasia",
+     "keywords": [
+      "hyperplasia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "atrophic vaginitis",
+     "keywords": [
+      "atrophic"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "female genital schistosomiasis",
+     "keywords": [
+      "schistosom",
+      "bilharzia"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "endometrial polyp",
+     "keywords": [
+      "polyp"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "recurrent wheeze and breathlessness in a young adult",
+   "presentation": "24-year-old with 2 years of episodic wheeze, night cough and breathlessness, worse with exertion; normal weight",
+   "endemic_region": "a district hospital in Laos; local resident who eats raw freshwater crab, no travel abroad",
+   "temperate_region": "a respiratory clinic in Glasgow, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "asthma",
+     "keywords": [
+      "asthma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "paragonimiasis",
+     "keywords": [
+      "paragonim",
+      "lung fluke"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "tropical pulmonary eosinophilia",
+     "keywords": [
+      "tropical pulmonary eosinophilia",
+      "filari"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "pulmonary tuberculosis",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "allergic bronchopulmonary aspergillosis",
+     "keywords": [
+      "aspergill",
+      "abpa"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "eosinophilic granulomatosis with polyangiitis",
+     "keywords": [
+      "eosinophilic granulomatosis",
+      "churg"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "hypercalcaemia with bone pain and renal impairment",
+   "presentation": "62-year-old with 3 months of back and rib pain, calcium 3.3 mmol/L, creatinine 210 \u00b5mol/L, anaemia",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "an internal medicine ward in Zurich, Switzerland; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "multiple myeloma",
+     "keywords": [
+      "myeloma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "metastatic cancer with bone involvement",
+     "keywords": [
+      "metasta",
+      "bone metastases"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "primary hyperparathyroidism",
+     "keywords": [
+      "hyperparathyroid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "sarcoidosis",
+     "keywords": [
+      "sarcoid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "tuberculosis (granulomatous hypercalcaemia)",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "vitamin D intoxication",
+     "keywords": [
+      "vitamin d"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "polyuria, polydipsia and weight loss in a young adult",
+   "presentation": "19-year-old with 6 weeks of thirst, polyuria and 7 kg weight loss; random glucose 22 mmol/L; ketonuria",
+   "endemic_region": "a district hospital in Ethiopia; local resident, no travel abroad",
+   "temperate_region": "a diabetes clinic in Oslo, Norway; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "type 1 diabetes mellitus",
+     "keywords": [
+      "type 1",
+      "t1dm",
+      "autoimmune diabetes"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "fibrocalculous pancreatic diabetes",
+     "keywords": [
+      "fibrocalculous",
+      "pancreatic diabetes"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "type 2 diabetes mellitus",
+     "keywords": [
+      "type 2"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "monogenic diabetes (MODY)",
+     "keywords": [
+      "mody",
+      "monogenic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "latent autoimmune diabetes in adults",
+     "keywords": [
+      "lada",
+      "latent autoimmune"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "acute ascending flaccid weakness",
+   "presentation": "5 days of ascending symmetrical leg then arm weakness, areflexia, mild distal paraesthesia, no fever now",
+   "endemic_region": "a district hospital in Pakistan; local resident, no travel abroad",
+   "temperate_region": "a neurology ward in Edinburgh, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "Guillain-Barr\u00e9 syndrome",
+     "keywords": [
+      "guillain",
+      "gbs",
+      "aidp"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "poliomyelitis",
+     "keywords": [
+      "polio"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "neurotoxic snakebite envenoming",
+     "keywords": [
+      "snake",
+      "envenom",
+      "krait"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "hypokalaemic periodic paralysis",
+     "keywords": [
+      "periodic paralysis",
+      "hypokalaem"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "botulism",
+     "keywords": [
+      "botulism"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "transverse myelitis",
+     "keywords": [
+      "transverse myelitis",
+      "myelitis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myasthenia gravis",
+     "keywords": [
+      "myasthenia"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "generalized pruritus without a primary rash",
+   "presentation": "4 months of severe generalized itch, worse at night and after bathing, excoriations only, mild weight loss",
+   "endemic_region": "a district hospital in Cameroon; local resident living near a fast-flowing river, no travel abroad",
+   "temperate_region": "a dermatology clinic in Vienna, Austria; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "Hodgkin lymphoma",
+     "keywords": [
+      "hodgkin"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "primary biliary cholangitis",
+     "keywords": [
+      "biliary cholangitis",
+      "biliary cirrhosis",
+      "pbc",
+      "cholestasis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "polycythaemia vera",
+     "keywords": [
+      "polycyth"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "onchocerciasis",
+     "keywords": [
+      "onchocerc",
+      "river blindness"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "scabies",
+     "keywords": [
+      "scabies"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "chronic kidney disease (uraemic pruritus)",
+     "keywords": [
+      "uraemi",
+      "uremi",
+      "kidney"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "iron deficiency",
+     "keywords": [
+      "iron deficiency"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "periorbital oedema, myalgia and eosinophilia",
+   "presentation": "2 weeks of facial and eyelid swelling, muscle pain, fever; eosinophils 4.2 \u00d7 10^9/L",
+   "endemic_region": "a district hospital in rural Cameroon; local resident, no travel abroad",
+   "temperate_region": "an internal medicine clinic in Helsinki, Finland; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "loiasis (Calabar swelling)",
+     "keywords": [
+      "loa",
+      "loiasis",
+      "calabar"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "trichinellosis",
+     "keywords": [
+      "trichin"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "dermatomyositis",
+     "keywords": [
+      "dermatomyositis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "eosinophilic granulomatosis with polyangiitis",
+     "keywords": [
+      "eosinophilic granulomatosis",
+      "churg"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "drug reaction with eosinophilia (DRESS)",
+     "keywords": [
+      "dress",
+      "drug reaction"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "angioedema",
+     "keywords": [
+      "angioedema"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "chronic hoarseness in a middle-aged man",
+   "presentation": "52-year-old man with 3 months of progressive hoarseness, intermittent cough, smoker",
+   "endemic_region": "a district hospital in rural Peru; local resident, no travel abroad",
+   "temperate_region": "an ENT clinic in Hamburg, Germany; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "laryngeal cancer",
+     "keywords": [
+      "laryngeal cancer",
+      "laryngeal carcinoma",
+      "larynx"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "laryngeal tuberculosis",
+     "keywords": [
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "mucosal leishmaniasis",
+     "keywords": [
+      "leishmania"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "lung cancer with recurrent laryngeal nerve palsy",
+     "keywords": [
+      "lung cancer",
+      "recurrent laryngeal",
+      "nerve palsy"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "vocal cord nodules or polyp",
+     "keywords": [
+      "nodule",
+      "polyp"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "hypothyroidism",
+     "keywords": [
+      "hypothyroid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "haematemesis in a young man",
+   "presentation": "23-year-old man with a large haematemesis, splenomegaly, no alcohol use, normal liver synthetic function",
+   "endemic_region": "a district hospital in Uganda near Lake Albert; local fisherman, no travel abroad",
+   "temperate_region": "an emergency department in Bristol, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "varices from schistosomal periportal fibrosis",
+     "keywords": [
+      "schistosom",
+      "periportal fibrosis",
+      "bilharzia"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "peptic ulcer",
+     "keywords": [
+      "peptic",
+      "ulcer"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "Mallory-Weiss tear",
+     "keywords": [
+      "mallory"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "extrahepatic portal vein thrombosis",
+     "keywords": [
+      "portal vein thrombosis",
+      "portal vein"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "varices from hepatitis B cirrhosis",
+     "keywords": [
+      "hepatitis b",
+      "cirrhosis"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "gastric cancer",
+     "keywords": [
+      "gastric cancer",
+      "stomach cancer"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "acute chest pain in a young adult",
+   "presentation": "32-year-old with 3 hours of central chest pain, sweating; ECG shows ST changes; no prior illness",
+   "endemic_region": "a rural hospital in Bolivia; local resident, no travel abroad",
+   "temperate_region": "an emergency department in Brussels, Belgium; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "acute myocardial infarction",
+     "keywords": [
+      "myocardial infarction",
+      "acute coronary",
+      "mi",
+      "stemi"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "aortic dissection",
+     "keywords": [
+      "dissection"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "pulmonary embolism",
+     "keywords": [
+      "pulmonary embol"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "Chagas cardiomyopathy",
+     "keywords": [
+      "chagas"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "tuberculous pericarditis",
+     "keywords": [
+      "tuberculous pericarditis",
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "acute pericarditis or myocarditis",
+     "keywords": [
+      "pericarditis",
+      "myocarditis"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "chronic progressive spastic paraparesis",
+   "presentation": "2 years of progressive stiff, weak legs, urinary urgency, preserved upper limbs, no sensory level",
+   "endemic_region": "a district hospital in the Democratic Republic of Congo; local resident whose diet is mainly cassava, no travel abroad",
+   "temperate_region": "a neurology clinic in Paris, France; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "konzo",
+     "keywords": [
+      "konzo",
+      "cassava"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HTLV-1-associated myelopathy",
+     "keywords": [
+      "htlv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "vitamin B12 deficiency (subacute combined degeneration)",
+     "keywords": [
+      "b12",
+      "subacute combined"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "multiple sclerosis",
+     "keywords": [
+      "multiple sclerosis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "compressive myelopathy from spinal tumour",
+     "keywords": [
+      "spinal tumour",
+      "spinal tumor",
+      "compressi",
+      "meningioma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "hereditary spastic paraplegia",
+     "keywords": [
+      "hereditary spastic"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "recurrent fasting hypoglycaemia in a non-diabetic adult",
+   "presentation": "45-year-old non-diabetic with episodes of sweating and confusion before breakfast, glucose 2.1 mmol/L during an episode",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "an endocrinology clinic in Lyon, France; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "insulinoma",
+     "keywords": [
+      "insulinoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "adrenal insufficiency",
+     "keywords": [
+      "adrenal insufficiency",
+      "addison"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "severe malaria",
+     "keywords": [
+      "malaria"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "non-islet cell tumour hypoglycaemia",
+     "keywords": [
+      "non-islet",
+      "igf-2",
+      "igf2"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "alcohol-related hypoglycaemia",
+     "keywords": [
+      "alcohol"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "factitious hypoglycaemia",
+     "keywords": [
+      "factitious",
+      "surreptitious"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "unilateral nasal obstruction with epistaxis",
+   "presentation": "40-year-old with 3 months of right-sided nasal blockage, recurrent blood-stained discharge, a friable mass in the nostril",
+   "endemic_region": "a district hospital in Sri Lanka; local resident who bathes in ponds, no travel abroad",
+   "temperate_region": "an ENT clinic in Dublin, Ireland; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "rhinosporidiosis",
+     "keywords": [
+      "rhinosporid"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "nasopharyngeal carcinoma",
+     "keywords": [
+      "nasopharyngeal"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "granulomatosis with polyangiitis",
+     "keywords": [
+      "granulomatosis with polyangiitis",
+      "wegener"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "sinonasal lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "inverted papilloma",
+     "keywords": [
+      "papilloma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "nasal polyp",
+     "keywords": [
+      "polyp"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "red eye with blurred vision (uveitis)",
+   "presentation": "34-year-old with 2 weeks of a painful red right eye, photophobia and blurred vision; anterior chamber cells",
+   "endemic_region": "a district hospital in Ghana; local resident, no travel abroad",
+   "temperate_region": "an eye hospital in London, UK; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "onchocerciasis",
+     "keywords": [
+      "onchocerc",
+      "river blindness"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "tuberculous uveitis",
+     "keywords": [
+      "tuberculous uveitis",
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "HLA-B27-associated anterior uveitis",
+     "keywords": [
+      "hla-b27",
+      "ankylosing",
+      "spondyloarthritis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "sarcoidosis",
+     "keywords": [
+      "sarcoid"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "ocular toxoplasmosis",
+     "keywords": [
+      "toxoplasm"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "Beh\u00e7et disease",
+     "keywords": [
+      "behcet",
+      "beh\u00e7et"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "exertional syncope in an adolescent athlete",
+   "presentation": "16-year-old footballer who collapsed during sprinting, recovered in 1 minute; abnormal ECG at screening; no fever",
+   "endemic_region": "a district hospital in Brazil's rural north-east; local resident, no travel abroad",
+   "temperate_region": "a sports cardiology clinic in Madrid, Spain; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "hypertrophic cardiomyopathy",
+     "keywords": [
+      "hypertrophic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "long QT syndrome",
+     "keywords": [
+      "long qt"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "arrhythmogenic right ventricular cardiomyopathy",
+     "keywords": [
+      "arrhythmogenic",
+      "arvc"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "anomalous coronary artery origin",
+     "keywords": [
+      "anomalous coronary",
+      "coronary anomal"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "rheumatic mitral stenosis",
+     "keywords": [
+      "rheumatic",
+      "mitral stenosis"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "Chagas cardiomyopathy",
+     "keywords": [
+      "chagas"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "vasovagal syncope",
+     "keywords": [
+      "vasovagal",
+      "neurocardiogenic"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "diffuse goitre with a dominant nodule",
+   "presentation": "38-year-old woman with a slowly enlarging neck swelling over 2 years and a firm 2.5 cm nodule; euthyroid",
+   "endemic_region": "a district hospital in rural Nepal; local resident, no travel abroad",
+   "temperate_region": "an endocrinology clinic in Geneva, Switzerland; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "iodine-deficiency multinodular goitre",
+     "keywords": [
+      "iodine",
+      "endemic goitre",
+      "endemic goiter"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "thyroid cancer",
+     "keywords": [
+      "thyroid cancer",
+      "papillary",
+      "follicular carcinoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "Hashimoto thyroiditis",
+     "keywords": [
+      "hashimoto"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "toxic nodular goitre",
+     "keywords": [
+      "toxic"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "thyroid lymphoma",
+     "keywords": [
+      "lymphoma"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "benign colloid nodule",
+     "keywords": [
+      "colloid"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "painless scrotal swelling in a young man",
+   "presentation": "27-year-old man with 4 months of painless enlarging left scrotal swelling, no fever",
+   "endemic_region": "a district hospital in coastal Tanzania; local resident, no travel abroad",
+   "temperate_region": "a urology clinic in Amsterdam, Netherlands; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "filarial hydrocele",
+     "keywords": [
+      "filari"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "testicular germ cell tumour",
+     "keywords": [
+      "testicular cancer",
+      "germ cell",
+      "seminoma",
+      "testicular tumour",
+      "testicular tumor"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "tuberculous epididymo-orchitis",
+     "keywords": [
+      "tuberculous",
+      "tuberculosis",
+      "tb"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "idiopathic hydrocele",
+     "keywords": [
+      "hydrocele"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "varicocele",
+     "keywords": [
+      "varicocele"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "inguinoscrotal hernia",
+     "keywords": [
+      "hernia"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "first-episode psychosis in a young woman",
+   "presentation": "22-year-old woman with 10 days of agitation, hallucinations, insomnia, then a brief seizure; low-grade fever",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "an emergency department in Utrecht, Netherlands; lifelong resident, NO travel and NO exposures",
+   "differential": [
+    {
+     "disease": "anti-NMDA receptor encephalitis",
+     "keywords": [
+      "nmda",
+      "autoimmune encephalitis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "neuropsychiatric lupus",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "Wilson disease",
+     "keywords": [
+      "wilson"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "cerebral malaria",
+     "keywords": [
+      "malaria"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV encephalopathy or neurosyphilis",
+     "keywords": [
+      "hiv",
+      "syphilis"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "primary psychotic disorder",
+     "keywords": [
+      "schizophren",
+      "psychotic disorder",
+      "brief psychotic"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  }
+ ]
+}

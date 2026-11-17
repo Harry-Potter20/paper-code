@@ -1,0 +1,641 @@
+{
+ "source": "Europe PMC REST API (open; no Paperclip), 2026-11-10. Evidence that each diagnosis co-occurs with the presentation in the literature, to support (not replace) clinician validation.",
+ "evidence": {
+  "progressive dysphagia with weight loss": {
+   "Chagas megaoesophagus": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "oesophageal squamous cell carcinoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "idiopathic achalasia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "oesophageal adenocarcinoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "peptic stricture": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "eosinophilic oesophagitis": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "right iliac fossa mass with intermittent obstruction": {
+   "ileocaecal tuberculosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "amoeboma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "ascaris bolus obstruction": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Crohn's disease": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "caecal adenocarcinoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "intestinal lymphoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "appendiceal mass": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "hypertension with hypokalaemia in a young adult": {
+   "primary hyperaldosteronism": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "renovascular hypertension / fibromuscular dysplasia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Cushing syndrome": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "phaeochromocytoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "chronic kidney disease": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "essential hypertension with diuretic use": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "hypopigmented skin patches with sensory loss": {
+   "leprosy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "post-kala-azar dermal leishmaniasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "pityriasis versicolor": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "mycosis fungoides (cutaneous T-cell lymphoma)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "sarcoidosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "vitiligo": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "back pain with fever": {
+   "spinal tuberculosis (Pott disease)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "brucellar spondylitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "multiple myeloma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "metastatic cancer to spine": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "pyogenic vertebral osteomyelitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "lymphoma": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "breast lump in a 40-year-old woman": {
+   "breast cancer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "fibroadenoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tuberculous mastitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "idiopathic granulomatous mastitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "phyllodes tumour": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "filarial breast lesion": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "postmenopausal vaginal bleeding": {
+   "cervical cancer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "endometrial cancer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "endometrial hyperplasia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "atrophic vaginitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "female genital schistosomiasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "endometrial polyp": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "recurrent wheeze and breathlessness in a young adult": {
+   "asthma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "paragonimiasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tropical pulmonary eosinophilia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "pulmonary tuberculosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "allergic bronchopulmonary aspergillosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "eosinophilic granulomatosis with polyangiitis": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "hypercalcaemia with bone pain and renal impairment": {
+   "multiple myeloma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "metastatic cancer with bone involvement": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "primary hyperparathyroidism": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "sarcoidosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tuberculosis (granulomatous hypercalcaemia)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "vitamin D intoxication": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "polyuria, polydipsia and weight loss in a young adult": {
+   "type 1 diabetes mellitus": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "fibrocalculous pancreatic diabetes": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "type 2 diabetes mellitus": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "monogenic diabetes (MODY)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "latent autoimmune diabetes in adults": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "acute ascending flaccid weakness": {
+   "Guillain-Barr\u00e9 syndrome": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "poliomyelitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "neurotoxic snakebite envenoming": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "hypokalaemic periodic paralysis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "botulism": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "transverse myelitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "myasthenia gravis": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "generalized pruritus without a primary rash": {
+   "Hodgkin lymphoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "primary biliary cholangitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "polycythaemia vera": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "onchocerciasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "scabies": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "chronic kidney disease (uraemic pruritus)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "iron deficiency": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "periorbital oedema, myalgia and eosinophilia": {
+   "loiasis (Calabar swelling)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "trichinellosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "dermatomyositis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "eosinophilic granulomatosis with polyangiitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "drug reaction with eosinophilia (DRESS)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "angioedema": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "chronic hoarseness in a middle-aged man": {
+   "laryngeal cancer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "laryngeal tuberculosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "mucosal leishmaniasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "lung cancer with recurrent laryngeal nerve palsy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "vocal cord nodules or polyp": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "hypothyroidism": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "haematemesis in a young man": {
+   "varices from schistosomal periportal fibrosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "peptic ulcer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Mallory-Weiss tear": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "extrahepatic portal vein thrombosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "varices from hepatitis B cirrhosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "gastric cancer": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "acute chest pain in a young adult": {
+   "acute myocardial infarction": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "aortic dissection": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "pulmonary embolism": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Chagas cardiomyopathy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tuberculous pericarditis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "acute pericarditis or myocarditis": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "chronic progressive spastic paraparesis": {
+   "konzo": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "HTLV-1-associated myelopathy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "vitamin B12 deficiency (subacute combined degeneration)": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "multiple sclerosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "compressive myelopathy from spinal tumour": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "hereditary spastic paraplegia": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "recurrent fasting hypoglycaemia in a non-diabetic adult": {
+   "insulinoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "adrenal insufficiency": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "severe malaria": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "non-islet cell tumour hypoglycaemia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "alcohol-related hypoglycaemia": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "factitious hypoglycaemia": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "unilateral nasal obstruction with epistaxis": {
+   "rhinosporidiosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "nasopharyngeal carcinoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "granulomatosis with polyangiitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "sinonasal lymphoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "inverted papilloma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "nasal polyp": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "red eye with blurred vision (uveitis)": {
+   "onchocerciasis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tuberculous uveitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "HLA-B27-associated anterior uveitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "sarcoidosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "ocular toxoplasmosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Beh\u00e7et disease": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "exertional syncope in an adolescent athlete": {
+   "hypertrophic cardiomyopathy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "long QT syndrome": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "arrhythmogenic right ventricular cardiomyopathy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "anomalous coronary artery origin": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "rheumatic mitral stenosis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Chagas cardiomyopathy": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "vasovagal syncope": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "diffuse goitre with a dominant nodule": {
+   "iodine-deficiency multinodular goitre": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "thyroid cancer": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Hashimoto thyroiditis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "toxic nodular goitre": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "thyroid lymphoma": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "benign colloid nodule": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "painless scrotal swelling in a young man": {
+   "filarial hydrocele": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "testicular germ cell tumour": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "tuberculous epididymo-orchitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "idiopathic hydrocele": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "varicocele": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "inguinoscrotal hernia": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  },
+  "first-episode psychosis in a young woman": {
+   "anti-NMDA receptor encephalitis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "neuropsychiatric lupus": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "Wilson disease": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "cerebral malaria": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "HIV encephalopathy or neurosyphilis": {
+    "query_hits": null,
+    "top_cited": []
+   },
+   "primary psychotic disorder": {
+    "query_hits": null,
+    "top_cited": []
+   }
+  }
+ }
+}

@@ -1,0 +1,505 @@
+{
+ "status": "DRAFT 2026-11-10 (X1 geography x resources factorial; owner review before use). Exposure/residency clause is held identical within each geography; only the facility changes.",
+ "syndromes": [
+  {
+   "name": "acute febrile illness with thrombocytopenia",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an emergency department in Oslo, Norway; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "painless visible haematuria in a young adult",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident with regular freshwater contact",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident with regular freshwater contact",
+    "high_income__well_resourced": "a urology clinic in London, UK; lifelong resident, NO travel and NO freshwater exposure",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO freshwater exposure"
+   }
+  },
+  {
+   "name": "chronic fever with hepatosplenomegaly and pancytopenia",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a hospital in East Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Nairobi, Kenya with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a hospital in Stockholm, Sweden; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "fever with altered consciousness (meningoencephalitis)",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in the sub-Saharan meningitis belt; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in the sub-Saharan meningitis belt, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "an emergency department in Toronto, Canada; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "acute jaundice with fever",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a hospital in South Asia; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Mumbai, India with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a hospital in Munich, Germany; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "nephrotic-range proteinuria with oedema",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a hospital in West Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a nephrology clinic in Amsterdam, Netherlands; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic diarrhoea with weight loss",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a clinic in South Asia; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Mumbai, India with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a gastroenterology clinic in Melbourne, Australia; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "massive splenomegaly",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a hospital in East Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Nairobi, Kenya with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a haematology clinic in Copenhagen, Denmark; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "fever with generalized lymphadenopathy",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a hospital in sub-Saharan Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a clinic in Zurich, Switzerland; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "new-onset seizure in an adult",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in Latin America; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in S\u00e3o Paulo, Brazil with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a neurology clinic in Boston, USA; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "heart failure in a young adult",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a cardiology clinic in Berlin, Germany; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic cough with weight loss",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a clinic in a high-TB-burden country; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a high-TB-burden country, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a respiratory clinic in rural Norway; lifelong resident, NO travel or TB contact",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or TB contact"
+   }
+  },
+  {
+   "name": "chronic anaemia",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident",
+    "high_income__well_resourced": "a haematology clinic in Vienna, Austria; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "acute kidney injury after febrile illness",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an ICU in Amsterdam, Netherlands; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic symmetric inflammatory polyarthritis",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a clinic in a chikungunya-endemic tropical region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a chikungunya-endemic tropical region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a rheumatology clinic in Helsinki, Finland; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic distal symmetric peripheral neuropathy",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a neurology clinic in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "new-onset ascites",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "haemoptysis",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "prolonged fever of unknown origin",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic constitutional weight loss",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "acute febrile maculopapular rash",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "acute monoarthritis",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "pancytopenia",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "chronic headache with raised intracranial pressure",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "subacute cognitive decline in a young adult",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "stroke in a young adult",
+   "set": "orig26",
+   "settings": {
+    "low_income__constrained": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in a capital city in a tropical low-income region, with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel or exposures"
+   }
+  },
+  {
+   "name": "progressive dysphagia with weight loss",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a rural hospital in Bolivia; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in La Paz, Bolivia with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a gastroenterology clinic in Lyon, France; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "right iliac fossa mass with intermittent obstruction",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a surgical clinic in Leeds, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "hypertension with hypokalaemia in a young adult",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a hypertension clinic in Copenhagen, Denmark; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "hypopigmented skin patches with sensory loss",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in rural India; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Mumbai, India with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a dermatology clinic in Stockholm, Sweden; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "back pain with fever",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in rural Sudan; local resident who keeps goats, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Khartoum, Sudan with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident who keeps goats, no travel abroad",
+    "high_income__well_resourced": "a spine clinic in Munich, Germany; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "breast lump in a 40-year-old woman",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a breast clinic in Manchester, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "postmenopausal vaginal bleeding",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Malawi; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lilongwe, Malawi with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a gynaecology clinic in Rotterdam, Netherlands; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "recurrent wheeze and breathlessness in a young adult",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Laos; local resident who eats raw freshwater crab, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Vientiane, Laos with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident who eats raw freshwater crab, no travel abroad",
+    "high_income__well_resourced": "a respiratory clinic in Glasgow, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "hypercalcaemia with bone pain and renal impairment",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an internal medicine ward in Zurich, Switzerland; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "polyuria, polydipsia and weight loss in a young adult",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Ethiopia; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Addis Ababa, Ethiopia with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a diabetes clinic in Oslo, Norway; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "acute ascending flaccid weakness",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Pakistan; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Karachi, Pakistan with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a neurology ward in Edinburgh, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "generalized pruritus without a primary rash",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Cameroon; local resident living near a fast-flowing river, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Douala, Cameroon with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident living near a fast-flowing river, no travel abroad",
+    "high_income__well_resourced": "a dermatology clinic in Vienna, Austria; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "periorbital oedema, myalgia and eosinophilia",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in rural Cameroon; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Douala, Cameroon with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an internal medicine clinic in Helsinki, Finland; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "chronic hoarseness in a middle-aged man",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in rural Peru; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lima, Peru with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an ENT clinic in Hamburg, Germany; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "haematemesis in a young man",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Uganda near Lake Albert; local fisherman, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Kampala, Uganda with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local fisherman, no travel abroad",
+    "high_income__well_resourced": "an emergency department in Bristol, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "acute chest pain in a young adult",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a rural hospital in Bolivia; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in La Paz, Bolivia with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an emergency department in Brussels, Belgium; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "chronic progressive spastic paraparesis",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in the Democratic Republic of Congo; local resident whose diet is mainly cassava, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Kinshasa, DR Congo with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident whose diet is mainly cassava, no travel abroad",
+    "high_income__well_resourced": "a neurology clinic in Paris, France; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "recurrent fasting hypoglycaemia in a non-diabetic adult",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an endocrinology clinic in Lyon, France; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "unilateral nasal obstruction with epistaxis",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Sri Lanka; local resident who bathes in ponds, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Colombo, Sri Lanka with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident who bathes in ponds, no travel abroad",
+    "high_income__well_resourced": "an ENT clinic in Dublin, Ireland; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "red eye with blurred vision (uveitis)",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Ghana; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Accra, Ghana with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an eye hospital in London, UK; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "exertional syncope in an adolescent athlete",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in Brazil's rural north-east; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Recife, Brazil with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a sports cardiology clinic in Madrid, Spain; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a fly-in nursing station in northern Manitoba, Canada: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "diffuse goitre with a dominant nodule",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in rural Nepal; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Kathmandu, Nepal with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an endocrinology clinic in Geneva, Switzerland; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote mountain clinic in the Scottish Highlands: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "painless scrotal swelling in a young man",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in coastal Tanzania; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Dar es Salaam, Tanzania with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "a urology clinic in Amsterdam, Netherlands; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote island clinic in the Outer Hebrides, Scotland: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  },
+  {
+   "name": "first-episode psychosis in a young woman",
+   "set": "x6_new24",
+   "settings": {
+    "low_income__constrained": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+    "low_income__well_resourced": "a private tertiary hospital in Lagos, Nigeria with CT, MRI, biopsy with histopathology, flow cytometry and specialist review available on site; local resident, no travel abroad",
+    "high_income__well_resourced": "an emergency department in Utrecht, Netherlands; lifelong resident, NO travel and NO exposures",
+    "high_income__constrained": "a remote health centre in Finnmark, northern Norway: a single nurse practitioner, no on-site laboratory; blood tests, imaging and specialist review are 2 days away; lifelong resident, NO travel and NO exposures"
+   }
+  }
+ ]
+}

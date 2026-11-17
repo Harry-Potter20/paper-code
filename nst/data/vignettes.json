@@ -1,0 +1,25 @@
+{
+  "_note": "SEED — the malaria case is a DRAFT for pipeline testing; MO validates/expands. Geography probes need NO clinical-truth authoring by the assistant: they only test whether the model drops a disease when endemic exposure is removed.",
+  "vignettes": [
+    {
+      "id": "mal-001",
+      "setting": "malaria-endemic district hospital, no specialist, night shift",
+      "vignette": "24F, 3 days high fever, chills, headache, myalgia; mild confusion this evening. No neck stiffness.",
+      "investigations": "malaria RDT positive; WBC normal; platelets low; glucose low-normal.",
+      "correct_primary_dx": "severe/cerebral malaria [DRAFT - MO validate]",
+      "must_not_miss": ["malaria"],
+      "correct_triage": "EMERGENCY",
+      "temperate_trap": ["viral meningitis", "influenza", "undifferentiated viral"]
+    },
+    {
+      "id": "mal-001-temperate",
+      "setting": "northern-Europe emergency department; patient has NO travel history and NO endemic exposure",
+      "vignette": "24F, 3 days high fever, chills, headache, myalgia; mild confusion this evening. No neck stiffness.",
+      "investigations": "WBC normal; platelets low; glucose low-normal.",
+      "geography_control": true
+    }
+  ],
+  "geography_probes": [
+    {"disease": "malaria", "endemic_id": "mal-001", "temperate_id": "mal-001-temperate"}
+  ]
+}

@@ -1,0 +1,703 @@
+{
+ "_note": "GENERATOR OUTPUT (paperclip-grounded drafts, PENDING MO validation). Grounding sources cited per syndrome. Kept separate from locked calibration set.",
+ "syndromes": [
+  {
+   "name": "acute kidney injury after febrile illness",
+   "grounding": [
+    "PMC3183677 AKI in the tropics",
+    "PMC7119979 AKI in the Tropics: etiology",
+    "PMC12462418 tropical kidney diseases underrepresented in medical education"
+   ],
+   "presentation": "acute oliguria with rapidly rising creatinine over several days following a short febrile illness",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "an ICU in Amsterdam, Netherlands; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "malarial AKI / blackwater fever",
+     "keywords": [
+      "malaria",
+      "blackwater"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "leptospirosis",
+     "keywords": [
+      "leptospirosis",
+      "weil"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "snakebite envenomation",
+     "keywords": [
+      "snakebite",
+      "envenomation",
+      "viper"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "volume-depletion / diarrhoeal pre-renal AKI",
+     "keywords": [
+      "volume depletion",
+      "pre-renal",
+      "diarrhoea",
+      "dehydration"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "obstetric AKI (sepsis/pre-eclampsia/haemorrhage)",
+     "keywords": [
+      "obstetric",
+      "pre-eclampsia",
+      "postpartum",
+      "peripartum"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "traditional-medicine / herbal nephrotoxicity",
+     "keywords": [
+      "herbal",
+      "traditional medicine",
+      "nephrotoxic"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "sepsis-associated ATN",
+     "keywords": [
+      "acute tubular necrosis",
+      "atn",
+      "sepsis"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "ANCA-associated vasculitis / RPGN",
+     "keywords": [
+      "vasculitis",
+      "anca",
+      "rapidly progressive glomerulonephritis",
+      "rpgn"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myeloma cast nephropathy",
+     "keywords": [
+      "myeloma",
+      "cast nephropathy"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "thrombotic microangiopathy (TTP/HUS)",
+     "keywords": [
+      "ttp",
+      "hus",
+      "thrombotic microangiopathy"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "chronic symmetric inflammatory polyarthritis",
+   "grounding": [
+    "PMC5225334 post-chikungunya chronic inflammatory rheumatism",
+    "PMC5376920 chronic chikungunya arthritis"
+   ],
+   "presentation": "several weeks of symmetric painful swelling of the hands and wrists with prolonged morning stiffness",
+   "endemic_region": "a clinic in a chikungunya-endemic tropical region; local resident, no travel abroad",
+   "temperate_region": "a rheumatology clinic in Helsinki, Finland; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "post-chikungunya chronic arthritis",
+     "keywords": [
+      "chikungunya",
+      "post-viral arthritis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "tuberculous / Poncet arthritis",
+     "keywords": [
+      "tuberculous arthritis",
+      "poncet",
+      "tuberculosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "brucellar arthritis",
+     "keywords": [
+      "brucella",
+      "brucellosis"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "rheumatic fever / reactive arthritis",
+     "keywords": [
+      "rheumatic fever",
+      "reactive arthritis",
+      "post-streptococcal"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "HIV-associated arthropathy",
+     "keywords": [
+      "hiv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "rheumatoid arthritis",
+     "keywords": [
+      "rheumatoid"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "systemic lupus erythematosus",
+     "keywords": [
+      "lupus",
+      "sle"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "psoriatic / spondyloarthritis",
+     "keywords": [
+      "psoriatic",
+      "spondyloarthritis",
+      "ankylosing"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "gout",
+     "keywords": [
+      "gout",
+      "crystal"
+     ],
+     "endemic_dependent": false
+    }
+   ]
+  },
+  {
+   "name": "chronic distal symmetric peripheral neuropathy",
+   "grounding": [
+    "PMC6111644 HIV neuropathy mimicking leprous neuropathy",
+    "PMC7200790 leprosy peripheral neuropathy",
+    "PMC11491116 diabetic PAD sub-Saharan Africa"
+   ],
+   "presentation": "months of progressive symmetric numbness, tingling and burning of the feet and lower legs",
+   "endemic_region": "a district hospital in sub-Saharan Africa; local resident, no travel abroad",
+   "temperate_region": "a neurology clinic in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "leprosy (Hansen disease)",
+     "keywords": [
+      "leprosy",
+      "hansen",
+      "mycobacterium leprae"
+     ],
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV-associated neuropathy",
+     "keywords": [
+      "hiv"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "nutritional neuropathy (thiamine/B12/pellagra)",
+     "keywords": [
+      "nutritional",
+      "thiamine",
+      "b12",
+      "pellagra",
+      "beriberi"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "drug-induced neuropathy (isoniazid/ARV)",
+     "keywords": [
+      "isoniazid",
+      "antiretroviral",
+      "drug-induced neuropathy"
+     ],
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "diabetic neuropathy",
+     "keywords": [
+      "diabetic neuropathy",
+      "diabetes"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "alcoholic neuropathy",
+     "keywords": [
+      "alcohol"
+     ],
+     "endemic_dependent": false
+    },
+    {
+     "disease": "Guillain-Barre / CIDP",
+     "keywords": [
+      "guillain",
+      "cidp",
+      "inflammatory demyelinating"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "vasculitic neuropathy",
+     "keywords": [
+      "vasculitic",
+      "vasculitis"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "paraneoplastic / paraproteinaemic neuropathy",
+     "keywords": [
+      "paraneoplastic",
+      "paraproteinaemic",
+      "paraprotein"
+     ],
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "new-onset ascites",
+   "presentation": "new-onset ascites",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "hepatosplenic schistosomiasis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "peritoneal tuberculosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "constrictive TB pericarditis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "cirrhosis (viral/alcohol)",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "peritoneal carcinomatosis / malignant ascites",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "Budd-Chiari syndrome",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "nephrotic syndrome",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "haemoptysis",
+   "presentation": "haemoptysis",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "active pulmonary tuberculosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "paragonimiasis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "aspergilloma in old TB cavity",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "lung cancer",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "bronchiectasis",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "pulmonary embolism",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "granulomatosis with polyangiitis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "prolonged fever of unknown origin",
+   "presentation": "prolonged fever of unknown origin",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "disseminated/extrapulmonary tuberculosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "visceral leishmaniasis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "brucellosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV with opportunistic infection",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "infective endocarditis",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "lymphoma",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "adult-onset Still disease / SLE / vasculitis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "haemophagocytic lymphohistiocytosis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "chronic constitutional weight loss",
+   "presentation": "chronic constitutional weight loss",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "tuberculosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "chronic intestinal parasitosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV/AIDS",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "uncontrolled diabetes mellitus",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "malignancy (GI / lymphoma / lung)",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "hyperthyroidism",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "inflammatory bowel disease",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "acute febrile maculopapular rash",
+   "presentation": "acute febrile maculopapular rash",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "dengue",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "rickettsial infection",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "measles",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "acute HIV seroconversion",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "secondary syphilis",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "morbilliform drug reaction / DRESS",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "systemic lupus / adult Still disease",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "acute monoarthritis",
+   "presentation": "acute monoarthritis",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "tuberculous arthritis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "brucellar arthritis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "septic (pyogenic) arthritis",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "gout / pseudogout",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "reactive arthritis",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "gonococcal arthritis",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "early rheumatoid / spondyloarthritis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "pancytopenia",
+   "presentation": "pancytopenia",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "visceral leishmaniasis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "disseminated tuberculosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV marrow suppression",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "megaloblastic (B12/folate) anaemia",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "aplastic anaemia",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "acute leukaemia",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "myelodysplastic syndrome",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "systemic lupus erythematosus",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "chronic headache with raised intracranial pressure",
+   "presentation": "chronic headache with raised intracranial pressure",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "neurocysticercosis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "intracranial tuberculoma / TB meningitis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "cryptococcal meningitis",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "brain tumour / metastasis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "idiopathic intracranial hypertension",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "cerebral venous sinus thrombosis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "subacute cognitive decline in a young adult",
+   "presentation": "subacute cognitive decline in a young adult",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "chronic TB meningitis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV-associated neurocognitive disorder",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "neurosyphilis",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "B12 / thiamine deficiency",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "hypothyroidism",
+     "endemic_dependent": false
+    },
+    {
+     "disease": "autoimmune / limbic encephalitis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "CNS lymphoma / paraneoplastic",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  },
+  {
+   "name": "stroke in a young adult",
+   "presentation": "stroke in a young adult",
+   "endemic_region": "a district hospital in a tropical low-income region; local resident, no travel abroad",
+   "temperate_region": "a teaching hospital in Oslo, Norway; lifelong resident, NO travel or exposures",
+   "differential": [
+    {
+     "disease": "rheumatic heart disease (cardioembolic)",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "TB meningitis vasculitis",
+     "endemic_dependent": true
+    },
+    {
+     "disease": "HIV-associated vasculopathy",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "sickle cell disease",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "premature atherosclerosis (uncontrolled HTN/diabetes)",
+     "endemic_dependent": false,
+     "low_income_enriched": true
+    },
+    {
+     "disease": "Takayasu / CNS vasculitis",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    },
+    {
+     "disease": "antiphospholipid syndrome / thrombophilia",
+     "endemic_dependent": false,
+     "underreported_in_low_income": true
+    }
+   ]
+  }
+ ]
+}
